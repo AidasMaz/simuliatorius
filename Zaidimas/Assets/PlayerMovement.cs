@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
 
     //--------------------------------
 
+    private void Start()
+    {
+        Instantiate(Instantiate(Resources.Load("prefab") as GameObject), new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z), Quaternion.identity);
+    }
+
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
