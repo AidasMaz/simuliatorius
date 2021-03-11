@@ -1,19 +1,34 @@
 fileFormatVersion: 2
-guid: e548eddeb92b24a409d865ab28148115
+guid: 851beddf09a04654f9e91c776f8ca7c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5653049819549937139
-    second: Alex_idle_16x16_0
+      213: -4684883900283840688
+    second: Alex_phone_16x16_0
   - first:
-      213: -234497230981590844
-    second: Alex_idle_16x16_1
+      213: 5130260507700960151
+    second: Alex_phone_16x16_1
   - first:
-      213: 5316517190548392578
-    second: Alex_idle_16x16_2
+      213: -2679247768901673598
+    second: Alex_phone_16x16_2
   - first:
-      213: -4628225620171276779
-    second: Alex_idle_16x16_3
+      213: 4605946561043961896
+    second: Alex_phone_16x16_3
+  - first:
+      213: 343403933524719964
+    second: Alex_phone_16x16_4
+  - first:
+      213: -3126528646077805264
+    second: Alex_phone_16x16_5
+  - first:
+      213: -6512505655745726874
+    second: Alex_phone_16x16_6
+  - first:
+      213: -3556507550830667752
+    second: Alex_phone_16x16_7
+  - first:
+      213: 5622721159652969690
+    second: Alex_phone_16x16_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alex_idle_16x16_0
+      name: Alex_phone_16x16_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 14
-        height: 22
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d02d328e3255c81b0800000000000000
-      internalID: -5653049819549937139
+      spriteID: 05792ad0ae2fbfeb0800000000000000
+      internalID: -4684883900283840688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex_idle_16x16_1
+      name: Alex_phone_16x16_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 22
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c09786c206eebcf0800000000000000
-      internalID: -234497230981590844
+      spriteID: 79b1bbe10c8523740800000000000000
+      internalID: 5130260507700960151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex_idle_16x16_2
+      name: Alex_phone_16x16_2
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
-        width: 14
-        height: 22
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28a05e8773018c940800000000000000
-      internalID: 5316517190548392578
+      spriteID: 28d9b55795661dad0800000000000000
+      internalID: -2679247768901673598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex_idle_16x16_3
+      name: Alex_phone_16x16_3
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 16
-        height: 22
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +203,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e3451e15d35cfb0800000000000000
-      internalID: -4628225620171276779
+      spriteID: 82815717efb9bef30800000000000000
+      internalID: 4605946561043961896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alex_phone_16x16_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c597630ee0404c400800000000000000
+      internalID: 343403933524719964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alex_phone_16x16_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d037ee2c65c94d0800000000000000
+      internalID: -3126528646077805264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alex_phone_16x16_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 666bd8f5c9eee95a0800000000000000
+      internalID: -6512505655745726874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alex_phone_16x16_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8185eb7c93fb4aec0800000000000000
+      internalID: -3556507550830667752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alex_phone_16x16_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc0030ba1be70e40800000000000000
+      internalID: 5622721159652969690
       vertices: []
       indices: 
       edges: []

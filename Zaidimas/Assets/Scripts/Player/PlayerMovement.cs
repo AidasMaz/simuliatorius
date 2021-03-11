@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rigidbody;
     [Space]
     private Vector2 movement;
+    [Space]
+    public Animator animator;
 
     //--------------------------------
 
@@ -23,6 +25,31 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if (movement.sqrMagnitude > 0.0001f)
+        {
+            var info = animator.GetCurrentAnimatorClipInfo(0);
+
+            switch (info[0].clip.name)
+            {
+                case "Player_Alex_Run_Front":
+                    animator.SetFloat("Direction_Number", 0);
+                    break;
+                case "Player_Alex_Run_Right":
+                    animator.SetFloat("Direction_Number", 1);
+                    break;
+                case "Player_Alex_Run_Back":
+                    animator.SetFloat("Direction_Number", 2);
+                    break;
+                case "Player_Alex_Run_Left":
+                    animator.SetFloat("Direction_Number", 3);
+                    break;
+            }
+        }
     }
 
     void FixedUpdate()
