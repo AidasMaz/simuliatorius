@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(Instantiate(Resources.Load("prefab") as GameObject), new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z), Quaternion.identity);
+        //Instantiate(Resources.Load("prefab") as GameObject, 
+        //    new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z), Quaternion.identity);
     }
 
     void Update()
@@ -29,3 +30,6 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.MovePosition(rigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 }
+
+
+
