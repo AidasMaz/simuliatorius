@@ -6,11 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement speed")]
     public float movementSpeed = 5f;
+
     [Header("Rigid body")]
     public Rigidbody2D rigidbody;
-    [Space]
+    
     private Vector2 movement;
-    [Space]
+
+    [Header("Animators")]
     public Animator animator;
 
     //--------------------------------
