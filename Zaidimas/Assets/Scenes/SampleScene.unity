@@ -19563,10 +19563,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2039188371}
   - component: {fileID: 2039188370}
-  - component: {fileID: 2039188369}
   - component: {fileID: 2039188373}
   - component: {fileID: 2039188372}
   - component: {fileID: 2039188374}
+  - component: {fileID: 2039188375}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -19574,32 +19574,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &2039188369
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2039188368}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5088616342e65dd4795f0609a4537e07, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0025992393, y: -0.6002495}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.5}
-    newSize: {x: 0.16, y: 0.22}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.86557484, y: 0.20380068}
-  m_EdgeRadius: 0
 --- !u!212 &2039188370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19659,7 +19633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039188368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.63, y: 0.87, z: 0}
+  m_LocalPosition: {x: -10.63, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19720,6 +19694,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!68 &2039188375
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039188368}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.43378544, y: -0.7508639}
+  - {x: -0.4394207, y: -0.7508639}
+  - {x: -0.43862247, y: -0.5184688}
+  - {x: 0.43458462, y: -0.51926714}
+  - {x: 0.434865, y: -0.7522246}
 --- !u!1 &2058287820
 GameObject:
   m_ObjectHideFlags: 0
