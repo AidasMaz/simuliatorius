@@ -15,15 +15,81 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animators")]
     public Animator animator;
 
+    public enum PlayerStates
+    {
+        Walking,
+        Mobile
+    }
+
+    public PlayerStates State;
+
     //--------------------------------
 
     private void Start()
     {
+        State = PlayerStates.Walking;
+
+        animator.SetBool("Phone_TakeOut", false);
+        animator.SetBool("Phone_PutAway", false);
+
+        // For first defense
         //Instantiate(Resources.Load("prefab") as GameObject, 
         //    new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z), Quaternion.identity);
     }
 
     void Update()
+    {
+        HandleInputs();
+    }
+
+    void FixedUpdate()
+    {
+        if (State == PlayerStates.Walking)
+        {
+            rigidbody.MovePosition(rigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    private void HandleInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && 
+            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_Alex_Phone_TakeOut" && 
+            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_Alex_Phone_PutAway")
+        {
+            Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+
+            switch (State)
+            {
+                case PlayerStates.Walking:
+                    movement = new Vector2(0, 0);
+                    animator.SetFloat("Horizontal", 0);
+                    animator.SetFloat("Vertical", 0);
+                    animator.SetFloat("Speed", 0);
+
+                    animator.SetFloat("Direction_Number", 0);
+                    animator.SetBool("Phone_PutAway", false);
+                    animator.SetBool("Phone_TakeOut", true);
+
+                    State = PlayerStates.Mobile;
+                    break;
+                case PlayerStates.Mobile:
+                    animator.SetBool("Phone_TakeOut", false);
+                    animator.SetBool("Phone_PutAway", true);
+
+                    State = PlayerStates.Walking;
+                    break;
+            }
+        }
+        else
+        {
+            if (State == PlayerStates.Walking)
+            {
+                HandleMovement();
+            }
+        }
+    }
+
+    private void HandleMovement()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -52,11 +118,6 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
-    }
-
-    void FixedUpdate()
-    {
-        rigidbody.MovePosition(rigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 }
 
