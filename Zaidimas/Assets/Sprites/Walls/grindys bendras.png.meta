@@ -1,0 +1,1508 @@
+fileFormatVersion: 2
+guid: 54acc3f58cc9b41448422efc92fa7ef7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 702067625724489350
+    second: grindys bendras_25
+  - first:
+      213: -5891719269211881667
+    second: grindys bendras_28
+  - first:
+      213: 1529963239601100051
+    second: grindys bendras_31
+  - first:
+      213: -4076337989932032396
+    second: grindys bendras_34
+  - first:
+      213: 5917121346515655876
+    second: grindys bendras_37
+  - first:
+      213: -3454079135727423920
+    second: grindys bendras_40
+  - first:
+      213: -9090611535755370314
+    second: grindys bendras_43
+  - first:
+      213: -4330513294393405065
+    second: grindys bendras_46
+  - first:
+      213: 7850394567191087731
+    second: grindys bendras_97
+  - first:
+      213: -4274064546595461873
+    second: grindys bendras_100
+  - first:
+      213: 3647870239714328251
+    second: grindys bendras_103
+  - first:
+      213: -367892306558409049
+    second: grindys bendras_106
+  - first:
+      213: -1812409490592951730
+    second: grindys bendras_109
+  - first:
+      213: -8728362644893270929
+    second: grindys bendras_112
+  - first:
+      213: 7696350484386585879
+    second: grindys bendras_115
+  - first:
+      213: -6312794083148626924
+    second: grindys bendras_118
+  - first:
+      213: -8875482021419624544
+    second: grindys bendras_169
+  - first:
+      213: -19138472168271582
+    second: grindys bendras_172
+  - first:
+      213: 6405567017554187697
+    second: grindys bendras_175
+  - first:
+      213: 2207658001480268414
+    second: grindys bendras_178
+  - first:
+      213: 3143597808918407025
+    second: grindys bendras_181
+  - first:
+      213: 6580242838885300788
+    second: grindys bendras_184
+  - first:
+      213: -6013866781388988646
+    second: grindys bendras_187
+  - first:
+      213: 5790253697681661659
+    second: grindys bendras_190
+  - first:
+      213: 8639727271066153336
+    second: grindys bendras_216
+  - first:
+      213: -5553282943496528424
+    second: grindys bendras_217
+  - first:
+      213: -8435104150054943113
+    second: grindys bendras_218
+  - first:
+      213: 7811332715044155000
+    second: grindys bendras_240
+  - first:
+      213: 4837085872300355122
+    second: grindys bendras_241
+  - first:
+      213: -5624652890920325306
+    second: grindys bendras_242
+  - first:
+      213: 2709627193192079701
+    second: grindys bendras_244
+  - first:
+      213: 2422924057675761305
+    second: grindys bendras_247
+  - first:
+      213: 4537870556030936534
+    second: grindys bendras_250
+  - first:
+      213: 5885243568215625240
+    second: grindys bendras_253
+  - first:
+      213: -3508453491068588658
+    second: grindys bendras_256
+  - first:
+      213: -8520224851331804392
+    second: grindys bendras_259
+  - first:
+      213: -6204051054277341876
+    second: grindys bendras_262
+  - first:
+      213: 1301260676958152020
+    second: grindys bendras_264
+  - first:
+      213: 3567384431668483372
+    second: grindys bendras_265
+  - first:
+      213: -8970089601047579432
+    second: grindys bendras_266
+  - first:
+      213: -7850176897102868845
+    second: grindys bendras_310
+  - first:
+      213: -2091522023281272450
+    second: grindys bendras_313
+  - first:
+      213: 5112669195314115645
+    second: grindys bendras_316
+  - first:
+      213: -3324048043670075825
+    second: grindys bendras_319
+  - first:
+      213: 3910075665523561964
+    second: grindys bendras_322
+  - first:
+      213: 8432026966649746404
+    second: grindys bendras_325
+  - first:
+      213: -6687124221630600979
+    second: grindys bendras_328
+  - first:
+      213: 915999909030502038
+    second: grindys bendras_373
+  - first:
+      213: -7569853380939494989
+    second: grindys bendras_376
+  - first:
+      213: -8852628696058679046
+    second: grindys bendras_379
+  - first:
+      213: 8708234343845281993
+    second: grindys bendras_382
+  - first:
+      213: -8853843210163615266
+    second: grindys bendras_385
+  - first:
+      213: -519896696799809356
+    second: grindys bendras_388
+  - first:
+      213: -5887306200138151016
+    second: grindys bendras_391
+  - first:
+      213: 754799585546516494
+    second: grindys bendras_427
+  - first:
+      213: 6270740537938465695
+    second: grindys bendras_430
+  - first:
+      213: 7537924833079456076
+    second: grindys bendras_433
+  - first:
+      213: -7120571830241578524
+    second: grindys bendras_436
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: grindys bendras_25
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e2c9f29ce3eb900800000000000000
+      internalID: 702067625724489350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_28
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3f3d425a886c3ea0800000000000000
+      internalID: -5891719269211881667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_31
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31554d7d5758b3510800000000000000
+      internalID: 1529963239601100051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_34
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47edbad0230fd67c0800000000000000
+      internalID: -4076337989932032396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_37
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc52ffa386dd1250800000000000000
+      internalID: 5917121346515655876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_40
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ee0e89355a010d0800000000000000
+      internalID: -3454079135727423920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_43
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0ab3ce8f8a7d180800000000000000
+      internalID: -9090611535755370314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_46
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 338
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77113905a1de6e3c0800000000000000
+      internalID: -4330513294393405065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_97
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37ac414044432fc60800000000000000
+      internalID: 7850394567191087731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_100
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05261990f87fa4c0800000000000000
+      internalID: -4274064546595461873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_103
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe34e0e7a6df9230800000000000000
+      internalID: 3647870239714328251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_106
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6acf775ebf4eaf0800000000000000
+      internalID: -367892306558409049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_109
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4219adbb2709d6e0800000000000000
+      internalID: -1812409490592951730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_112
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6cf8585b60aed680800000000000000
+      internalID: -8728362644893270929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_115
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d94c01dfdeeca60800000000000000
+      internalID: 7696350484386585879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_118
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 290
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4140dbd5a337468a0800000000000000
+      internalID: -6312794083148626924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_169
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7dae63024f3d480800000000000000
+      internalID: -8875482021419624544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_172
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221ddd439a10cbff0800000000000000
+      internalID: -19138472168271582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_175
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5964aa34525e850800000000000000
+      internalID: 6405567017554187697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_178
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ab7c3714d23ae10800000000000000
+      internalID: 2207658001480268414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_181
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177274d3d8d40ab20800000000000000
+      internalID: 3143597808918407025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_184
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43af0939ff7b15b50800000000000000
+      internalID: 6580242838885300788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_187
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f99c076047a8ca0800000000000000
+      internalID: -6013866781388988646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_190
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 242
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bde15b95f0d1b5050800000000000000
+      internalID: 5790253697681661659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_216
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87137248d2a76e770800000000000000
+      internalID: 8639727271066153336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_217
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd57afd596cee2b0800000000000000
+      internalID: -5553282943496528424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_218
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7764d84777d70fa80800000000000000
+      internalID: -8435104150054943113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_240
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e2896d7bd676c60800000000000000
+      internalID: 7811332715044155000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_241
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ee58e09f7c02340800000000000000
+      internalID: 4837085872300355122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_242
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fe1d31ff731f1b0800000000000000
+      internalID: -5624652890920325306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_244
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551e3f373978a9520800000000000000
+      internalID: 2709627193192079701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_247
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 996038fd794ff9120800000000000000
+      internalID: 2422924057675761305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_250
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5ade06a31c9fe30800000000000000
+      internalID: 4537870556030936534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_253
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e052c08d59ca150800000000000000
+      internalID: 5885243568215625240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_256
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8da0e173287f4fc0800000000000000
+      internalID: -3508453491068588658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_259
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81399e9c3a412c980800000000000000
+      internalID: -8520224851331804392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_262
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 194
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4d4965cf68c6e9a0800000000000000
+      internalID: -6204051054277341876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_264
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 178
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455664af0b10f0210800000000000000
+      internalID: 1301260676958152020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_265
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 178
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25dbd26d35e18130800000000000000
+      internalID: 3567384431668483372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_266
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 178
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d4322e8807d38380800000000000000
+      internalID: -8970089601047579432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_310
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e843044b19e0390800000000000000
+      internalID: -7850176897102868845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_313
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79d96a1dcb69f2e0800000000000000
+      internalID: -2091522023281272450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_316
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d34b7c88b89d3f640800000000000000
+      internalID: 5112669195314115645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_319
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4686b47aeb9ed1d0800000000000000
+      internalID: -3324048043670075825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_322
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce55e60f911634630800000000000000
+      internalID: 3910075665523561964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_325
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e33ca3f9d3940570800000000000000
+      internalID: 8432026966649746404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_328
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 146
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de82cc843ff8233a0800000000000000
+      internalID: -6687124221630600979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_373
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e9d08601946bc00800000000000000
+      internalID: 915999909030502038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_376
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9cf43f47a72f690800000000000000
+      internalID: -7569853380939494989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_379
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af03efaaa15252580800000000000000
+      internalID: -8852628696058679046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_382
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c041cd5ffcd9d870800000000000000
+      internalID: 8708234343845281993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_385
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed981319284d02580800000000000000
+      internalID: -8853843210163615266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_388
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0395375b4f8c8f0800000000000000
+      internalID: -519896696799809356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_391
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b8fc804361c4ea0800000000000000
+      internalID: -5887306200138151016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_427
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 50
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e08bc155936997a00800000000000000
+      internalID: 754799585546516494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_430
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 50
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93d672ab45260750800000000000000
+      internalID: 6270740537938465695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_433
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 50
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c41fb43b2b61c9860800000000000000
+      internalID: 7537924833079456076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grindys bendras_436
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 50
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e13cc495a5ae2d90800000000000000
+      internalID: -7120571830241578524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
