@@ -6303,6 +6303,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d29adb7b7e057d44b0333459c1aaf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameDataObject:
+    DayList:
+    - number: 1
+      DaysHomeTasks: 00000000
+      DaysBigTasks: 01000000
+    - number: 2
+      DaysHomeTasks: 03000000
+      DaysBigTasks: 00000000
+    - number: 3
+      DaysHomeTasks: 02000000
+      DaysBigTasks: 00000000
+    - number: 4
+      DaysHomeTasks: 01000000
+      DaysBigTasks: 00000000
+    - number: 5
+      DaysHomeTasks: 03000000
+      DaysBigTasks: 01000000
+    - number: 6
+      DaysHomeTasks: 02000000
+      DaysBigTasks: 00000000
+    - number: 7
+      DaysHomeTasks: 0000000001000000
+      DaysBigTasks: 01000000
+    - number: 8
+      DaysHomeTasks: 0000000003000000
+      DaysBigTasks: 00000000
+    - number: 9
+      DaysHomeTasks: 0100000002000000
+      DaysBigTasks: 00000000
+    - number: 10
+      DaysHomeTasks: 0300000000000000
+      DaysBigTasks: 00000000
+    - number: 11
+      DaysHomeTasks: 0100000002000000
+      DaysBigTasks: 01000000
+    - number: 12
+      DaysHomeTasks: 0100000002000000
+      DaysBigTasks: 00000000
+    - number: 13
+      DaysHomeTasks: 0000000003000000
+      DaysBigTasks: 01000000
+    - number: 14
+      DaysHomeTasks: 0200000001000000
+      DaysBigTasks: 00000000
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14638,6 +14682,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 648f45801db2a374e8fd040477248c6d, type: 3}
   - {fileID: 2800000, guid: 6b6f554f6b7380a4b89a2d27aef6e1b5, type: 3}
   - {fileID: 2800000, guid: 72f5d00014ef1404eba96fef4ec31244, type: 3}
+  GameDaysInfo: {fileID: 0}
 --- !u!4 &1064381455
 Transform:
   m_ObjectHideFlags: 0
@@ -26956,6 +27001,7 @@ GameObject:
   - component: {fileID: 2039188372}
   - component: {fileID: 2039188374}
   - component: {fileID: 2039188375}
+  - component: {fileID: 2039188369}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -26963,6 +27009,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!70 &2039188369
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039188368}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.006243397, y: -0.59649956}
+  m_Size: {x: 0.92508423, y: 0.30700698}
+  m_Direction: 1
 --- !u!212 &2039188370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27091,7 +27153,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039188368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -27100,13 +27162,15 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.42484283, y: -0.7508639}
+  - {x: 0.43515205, y: -0.750209}
   - {x: -0.4206276, y: -0.73752445}
-  - {x: -0.4666872, y: -0.6209518}
+  - {x: -0.42747116, y: -0.6252413}
   - {x: -0.4255104, y: -0.5162632}
-  - {x: 0.42473602, y: -0.5237388}
-  - {x: 0.45984364, y: -0.6332688}
-  - {x: 0.4259224, y: -0.7488709}
+  - {x: 0.445776, y: -0.5279468}
+  - {x: 0.45781326, y: -0.6342387}
+  - {x: 0.4581604, y: -0.63467145}
+  - {x: 0.43924236, y: -0.73201954}
+  - {x: 0.43545055, y: -0.7485732}
 --- !u!1 &2058287820
 GameObject:
   m_ObjectHideFlags: 0

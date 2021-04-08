@@ -1,52 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 using UnityEngine;
 
 public class TaskGeneration : MonoBehaviour
 {
-    public class GameData
+    [System.Serializable]
+    public class Day
     {
-        public class Day
+        public int number;
+        public List<HomeTasks> DaysHomeTasks = new List<HomeTasks>(0);
+        public List<BigTasks> DaysBigTasks = new List<BigTasks>(0);
+
+        public Day() { }
+
+        public Day(int num, List<HomeTasks> tasks)
         {
-            public int number;
-            public List<HomeTasks> DaysHomeTasks = new List<HomeTasks>(0);
-            public List<BigTasks> DaysBigTasks = new List<BigTasks>(0);
+            FormDay(num);
 
-            public Day() { }
-
-            public Day(int num, List<HomeTasks> tasks)
-            {
-                FormDay(num);
-
-                DaysHomeTasks.AddRange(tasks);
-            }
-
-            public Day(int num, HomeTasks task)
-            {
-                FormDay(num);
-
-                DaysHomeTasks.Add(task);
-            }
-
-            public void FormDay(int num)
-            {
-                number = num;
-
-                if (number % 3 == 0 || number % 2 == 0)
-                {
-                    // Days: 2, 3, 4, 6, 8, 9, 10, 12, 14
-                    DaysBigTasks.Add(BigTasks.Working);
-                }
-                else
-                {
-                    // Days: 1, 5, 7, 11, 13
-                    DaysBigTasks.Add(BigTasks.Shopping);
-                }
-            }
+            DaysHomeTasks.AddRange(tasks);
         }
 
-        List<Day> DayList = new List<Day>(0);
+        public Day(int num, HomeTasks task)
+        {
+            FormDay(num);
+
+            DaysHomeTasks.Add(task);
+        }
+
+        public void FormDay(int num)
+        {
+            number = num;
+
+            if (number % 3 == 0 || number % 2 == 0)
+            {
+                // Days: 2, 3, 4, 6, 8, 9, 10, 12, 14
+                DaysBigTasks.Add(BigTasks.Working);
+            }
+            else
+            {
+                // Days: 1, 5, 7, 11, 13
+                DaysBigTasks.Add(BigTasks.Shopping);
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class GameData
+    {
+        public List<Day> DayList = new List<Day>(0);
 
         public GameData()
         {
@@ -63,7 +67,7 @@ public class TaskGeneration : MonoBehaviour
                 if (HomeTaskList.Count == 0)
                 {
                     HomeTaskList = FormHomeTaskList();
-                    Debug.LogWarning("refiled");
+                    //Debug.LogWarning("refiled");
                 }
 
                 if (i < 6)
@@ -86,7 +90,7 @@ public class TaskGeneration : MonoBehaviour
                         if (lastUsedTask != HomeTaskList[index])
                             break;
                     }
-                    Debug.Log("index " + index + " " + HomeTaskList[index]);
+                    //Debug.Log("index " + index + " " + HomeTaskList[index]);
                     l.Add(HomeTaskList[index]);
                     lastUsedTask = HomeTaskList[index];
                     HomeTaskList.RemoveAt(index);
@@ -96,7 +100,7 @@ public class TaskGeneration : MonoBehaviour
                         if (lastUsedTask != HomeTaskList[index])
                             break;
                     }
-                    Debug.Log("index " + index + " " + HomeTaskList[index]);
+                    //Debug.Log("index " + index + " " + HomeTaskList[index]);
                     l.Add(HomeTaskList[index]);
                     lastUsedTask = HomeTaskList[index];
                     HomeTaskList.RemoveAt(index);
@@ -104,13 +108,13 @@ public class TaskGeneration : MonoBehaviour
                     d = new Day(i + 1, l);
                     l.Clear();
                 }
-                
+
                 DayList.Add(d);
 
-                Debug.Log(i + "|" + d.number + "-" + d.DaysBigTasks.First().ToString());
-                Debug.Log("Other tasks " + d.DaysHomeTasks.First().ToString());
-                if (d.number > 6)
-                    Debug.Log("        " + d.DaysHomeTasks.ElementAt(1).ToString());
+                //Debug.Log(i + "|" + d.number + "-" + d.DaysBigTasks.First().ToString());
+                //Debug.Log("Other tasks " + d.DaysHomeTasks.First().ToString());
+                //if (d.number > 6)
+                   // Debug.Log("        " + d.DaysHomeTasks.ElementAt(1).ToString());
             }
         }
 
@@ -141,16 +145,66 @@ public class TaskGeneration : MonoBehaviour
 
     public GameData GameDataObject;
 
-    public void SetMainData()
-    {
-        GameDataObject = new GameData();
-    }
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // prideti saugojima ar kiekviena uzduotis buvo ivykdyta
+        // saugoti nustatymus
+        // saugoti zaidejo esama vieta
 
     void Start()
     {
-        // patikrinam ar reik kurti ar atkurti
-        SetMainData();
+        Debug.Log(Application.persistentDataPath);
+
+        string path = Application.persistentDataPath + "/dayData.v1";
+        if (File.Exists(path))
+        {
+            Debug.Log("Data will be loaded");
+            GameDataObject.DayList = LoadDayData();
+        }
+        else
+        {
+            Debug.Log("Data will be created");
+            GameDataObject = new GameData();
+            SaveLevelData();
+        }
+    }
+
+    public static List<Day> LoadDayData()
+    {
+        string path = Application.persistentDataPath + "/dayData.v1";
+        if (File.Exists(path))
+        {
+            // Debug.Log("Day data save file exists");
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            List<Day> data = formatter.Deserialize(stream) as List<Day>;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.LogWarning("Day data save file was not found");
+            return null;
+        }
+    }
+
+    public void SaveLevelData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/dayData.v1";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        formatter.Serialize(stream, GameDataObject);
+        stream.Close();
     }
 
 
+    public static void DeleteLevelData()
+    {
+        string levelPath = Application.persistentDataPath + "/dayData.v1";
+
+        if (File.Exists(levelPath))
+            File.Delete(levelPath);
+    }
 }
