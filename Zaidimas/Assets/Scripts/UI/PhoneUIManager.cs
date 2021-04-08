@@ -44,6 +44,10 @@ public class PhoneUIManager : MonoBehaviour
     [Header("Variables and sprites")]
     public Texture2D[] CursorTextures;
 
+    [Header("Managers")]
+    public TaskGeneration GameDaysInfo;
+
+
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     private void Awake()
@@ -121,7 +125,7 @@ public class PhoneUIManager : MonoBehaviour
                 break;
         }
 
-        // sace data
+        // save data
     }
 
     //--------------------------------------------
