@@ -32,11 +32,8 @@ public class PhoneUIManager : MonoBehaviour
     public Slider MusicSlider;
     public Slider SoundSlider;
     public Button CursorSizeSmallButton;
-    public Button CursorSizeSmal2Button;
-    public Button CursorSizeSmal3Button;
-
-    //[Header("-----  ------")]
-    //public GameObject MainWindow;
+    public Button CursorSizeMediumButton;
+    public Button CursorSizeBigButton;
 
     [Header("Sounds")]
     public AudioSource ClickSound;
@@ -44,20 +41,21 @@ public class PhoneUIManager : MonoBehaviour
     public AudioSource TurnOffSound;
 
     //---------------------------------
+    [Header("Variables and sprites")]
+    public Texture2D[] CursorTextures;
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     private void Awake()
     {
-        GetInfoForGameStart();
+        // music sliders
+        // cursor size
+        // player level
+        // player picture
+        // phone case
     }
 
-    private void GetInfoForGameStart()
-    {
-        // telefono remas
-
-        // zaidejo foto ir lygis saugojime
-
-        // kursoriaus dydis ir garsai nustatymuose
-    }
+    //--------------------------------------------
 
     public void OpenMainWindow()
     {
@@ -96,6 +94,37 @@ public class PhoneUIManager : MonoBehaviour
         //MainWindow.SetActive(false);
         //TasksWindow.SetActive(true);
     }
+
+    //--------------------------------------------
+
+    public void SetCursorSize(string size)
+    {
+        switch (size)
+        {
+            case "small":
+                Cursor.SetCursor(CursorTextures[0], Vector2.zero, CursorMode.Auto);
+                CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallActivated");
+                CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
+                CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
+                break;
+            case "medium":
+                Cursor.SetCursor(CursorTextures[1], Vector2.zero, CursorMode.Auto);
+                CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
+                CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumActivated");
+                CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
+                break;
+            case "big":
+                Cursor.SetCursor(CursorTextures[2], Vector2.zero, CursorMode.Auto);
+                CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
+                CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
+                CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigActivated");
+                break;
+        }
+
+        // sace data
+    }
+
+    //--------------------------------------------
 
     public void SaveAndQuit()
     {
