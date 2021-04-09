@@ -145,6 +145,8 @@ public class TaskGeneration : MonoBehaviour
         }
     }
 
+    //-------------------------------------------------------------------
+
     public enum HomeTasks
     {
         Dishes,
@@ -161,6 +163,8 @@ public class TaskGeneration : MonoBehaviour
 
     public GameData GameDataObject;
 
+    public static string LevelDataFileName = "dayData.v1";
+
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         // saugoti nustatymus
@@ -168,9 +172,9 @@ public class TaskGeneration : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(Application.persistentDataPath);
+        //Debug.Log(Application.persistentDataPath);
 
-        string path = Application.persistentDataPath + "/dayData.v1";
+        string path = Application.persistentDataPath + "/" + LevelDataFileName;
         if (File.Exists(path))
         {
             Debug.Log("Data will be loaded");
@@ -186,7 +190,7 @@ public class TaskGeneration : MonoBehaviour
 
     public static List<Day> LoadDayData()
     {
-        string path = Application.persistentDataPath + "/dayData.v1";
+        string path = Application.persistentDataPath + "/" + LevelDataFileName;
         if (File.Exists(path))
         {
             // Debug.Log("Day data save file exists");
@@ -208,7 +212,7 @@ public class TaskGeneration : MonoBehaviour
     public void SaveLevelData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/dayData.v1";
+        string path = Application.persistentDataPath + "/" + LevelDataFileName;
         FileStream stream = new FileStream(path, FileMode.Create);
         formatter.Serialize(stream, GameDataObject);
         stream.Close();
@@ -216,7 +220,7 @@ public class TaskGeneration : MonoBehaviour
 
     public static void DeleteLevelData()
     {
-        string levelPath = Application.persistentDataPath + "/dayData.v1";
+        string levelPath = Application.persistentDataPath + "/" + LevelDataFileName;
 
         if (File.Exists(levelPath))
             File.Delete(levelPath);
