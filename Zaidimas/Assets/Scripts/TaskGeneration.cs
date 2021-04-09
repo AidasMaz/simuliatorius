@@ -11,7 +11,7 @@ public class TaskGeneration : MonoBehaviour
     public class TaskObj<T>
     {
         public T Task;
-        bool Done;
+        public bool Done;
 
         public TaskObj(T task)
         {
@@ -66,71 +66,76 @@ public class TaskGeneration : MonoBehaviour
     [System.Serializable]
     public class GameData
     {
-        public List<Day> DayList = new List<Day>(0);
+        public List<Day> DayList;
 
-        public GameData()
+        public GameData(bool generate)
         {
-            List<HomeTasks> HomeTaskList = new List<HomeTasks>(0);
-            HomeTasks lastUsedTask = HomeTasks.ToiletPapper;
-            var random = new System.Random();
-            int index = 0;
-            Day d = new Day();
-            List<HomeTasks> l = new List<HomeTasks>(0);
+            DayList = new List<Day>(0);
 
-            for (int i = 0; i < 14; i++)
+            if (generate)
             {
-                //Debug.Log(i);
-                if (HomeTaskList.Count == 0)
+                List<HomeTasks> HomeTaskList = new List<HomeTasks>(0);
+                HomeTasks lastUsedTask = HomeTasks.ToiletPapper;
+                var random = new System.Random();
+                int index = 0;
+                Day d = new Day();
+                List<HomeTasks> l = new List<HomeTasks>(0);
+
+                for (int i = 0; i < 14; i++)
                 {
-                    HomeTaskList = FormHomeTaskList();
-                    //Debug.LogWarning("refiled");
-                }
-
-                if (i < 6)
-                {
-                    for (int j = 0; j < 10; j++)
+                    //Debug.Log(i);
+                    if (HomeTaskList.Count == 0)
                     {
-                        index = random.Next(HomeTaskList.Count);
-                        if (lastUsedTask != HomeTaskList[index])
-                            break;
+                        HomeTaskList = FormHomeTaskList();
+                        //Debug.LogWarning("refiled");
                     }
-                    lastUsedTask = HomeTaskList[index];
-                    d = new Day(i + 1, HomeTaskList[index]);
-                    HomeTaskList.RemoveAt(index);
-                }
-                else
-                {
-                    for (int j = 0; j < 10; j++)
+
+                    if (i < 6)
                     {
-                        index = random.Next(HomeTaskList.Count);
-                        if (lastUsedTask != HomeTaskList[index])
-                            break;
+                        for (int j = 0; j < 10; j++)
+                        {
+                            index = random.Next(HomeTaskList.Count);
+                            if (lastUsedTask != HomeTaskList[index])
+                                break;
+                        }
+                        lastUsedTask = HomeTaskList[index];
+                        d = new Day(i + 1, HomeTaskList[index]);
+                        HomeTaskList.RemoveAt(index);
                     }
-                    //Debug.Log("index " + index + " " + HomeTaskList[index]);
-                    l.Add(HomeTaskList[index]);
-                    lastUsedTask = HomeTaskList[index];
-                    HomeTaskList.RemoveAt(index);
-                    for (int k = 0; k < 10; k++)
+                    else
                     {
-                        index = random.Next(HomeTaskList.Count);
-                        if (lastUsedTask != HomeTaskList[index])
-                            break;
+                        for (int j = 0; j < 10; j++)
+                        {
+                            index = random.Next(HomeTaskList.Count);
+                            if (lastUsedTask != HomeTaskList[index])
+                                break;
+                        }
+                        //Debug.Log("index " + index + " " + HomeTaskList[index]);
+                        l.Add(HomeTaskList[index]);
+                        lastUsedTask = HomeTaskList[index];
+                        HomeTaskList.RemoveAt(index);
+                        for (int k = 0; k < 10; k++)
+                        {
+                            index = random.Next(HomeTaskList.Count);
+                            if (lastUsedTask != HomeTaskList[index])
+                                break;
+                        }
+                        //Debug.Log("index " + index + " " + HomeTaskList[index]);
+                        l.Add(HomeTaskList[index]);
+                        lastUsedTask = HomeTaskList[index];
+                        HomeTaskList.RemoveAt(index);
+
+                        d = new Day(i + 1, l);
+                        l.Clear();
                     }
-                    //Debug.Log("index " + index + " " + HomeTaskList[index]);
-                    l.Add(HomeTaskList[index]);
-                    lastUsedTask = HomeTaskList[index];
-                    HomeTaskList.RemoveAt(index);
 
-                    d = new Day(i + 1, l);
-                    l.Clear();
+                    DayList.Add(d);
+
+                    //Debug.Log(i + "|" + d.number + "-" + d.DaysBigTasks.First().ToString());
+                    //Debug.Log("Other tasks " + d.DaysHomeTasks.First().ToString());
+                    //if (d.number > 6)
+                    // Debug.Log("        " + d.DaysHomeTasks.ElementAt(1).ToString());
                 }
-
-                DayList.Add(d);
-
-                //Debug.Log(i + "|" + d.number + "-" + d.DaysBigTasks.First().ToString());
-                //Debug.Log("Other tasks " + d.DaysHomeTasks.First().ToString());
-                //if (d.number > 6)
-                   // Debug.Log("        " + d.DaysHomeTasks.ElementAt(1).ToString());
             }
         }
 
@@ -142,6 +147,30 @@ public class TaskGeneration : MonoBehaviour
             RandomisedHomeTaskList.Add(HomeTasks.ToiletPapper);
             RandomisedHomeTaskList.Add(HomeTasks.Trashes);
             return RandomisedHomeTaskList;
+        }
+
+        public void PrintOutDayList()
+        {
+            string path = Application.persistentDataPath + "/list.txt";
+            if (File.Exists(path))
+                File.Delete(path);
+
+            StreamWriter stream = new StreamWriter(path);
+            stream.WriteLine("Day List Data");
+            stream.WriteLine("---------------------------");
+            foreach (var day in DayList)
+            {
+                stream.WriteLine("\n" + day.number);
+                stream.WriteLine("Main task: " + day.DaysBigTasks.First().Task.ToString() + " (" + day.DaysBigTasks.First().Done + ")");
+                //Debug.Log(day.number);
+                //Debug.Log("HomeTaskCapacity: " + day.DaysHomeTasks.Capacity);
+                foreach (var task in day.DaysHomeTasks)
+                {
+                    stream.WriteLine("Other tasks: " + task.Task.ToString() + " (" + task.Done + ")");
+                }
+            }
+            stream.WriteLine("---------------------------");
+            stream.Close();
         }
     }
 
@@ -167,8 +196,8 @@ public class TaskGeneration : MonoBehaviour
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        // saugoti nustatymus
-        // saugoti zaidejo esama vieta
+    // saugoti nustatymus
+    // saugoti zaidejo esama vieta
 
     void Start()
     {
@@ -178,28 +207,28 @@ public class TaskGeneration : MonoBehaviour
         if (File.Exists(path))
         {
             Debug.Log("Data will be loaded");
-            GameDataObject.DayList = LoadDayData();
+            GameDataObject = LoadDayData();
+            //GameDataObject.PrintOutDayList();
         }
         else
         {
             Debug.Log("Data will be created");
-            GameDataObject = new GameData();
+            GameDataObject = new GameData(true);
+            //GameDataObject.PrintOutDayList();
             SaveLevelData();
         }
     }
 
-    public static List<Day> LoadDayData()
+    public static GameData LoadDayData()
     {
         string path = Application.persistentDataPath + "/" + LevelDataFileName;
         if (File.Exists(path))
         {
-            // Debug.Log("Day data save file exists");
+            Debug.Log("Day data save file exists");
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-
-            List<Day> data = formatter.Deserialize(stream) as List<Day>;
+            GameData data = formatter.Deserialize(stream) as GameData;
             stream.Close();
-
             return data;
         }
         else
