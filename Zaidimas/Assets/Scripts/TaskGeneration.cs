@@ -8,11 +8,24 @@ using UnityEngine;
 public class TaskGeneration : MonoBehaviour
 {
     [System.Serializable]
+    public class TaskObj<T>
+    {
+        public T Task;
+        bool Done;
+
+        public TaskObj(T task)
+        {
+            Task = task;
+            Done = false;
+        }
+    }
+
+    [System.Serializable]
     public class Day
     {
         public int number;
-        public List<HomeTasks> DaysHomeTasks = new List<HomeTasks>(0);
-        public List<BigTasks> DaysBigTasks = new List<BigTasks>(0);
+        public List<TaskObj<HomeTasks>> DaysHomeTasks = new List<TaskObj<HomeTasks>>(0);
+        public List<TaskObj<BigTasks>> DaysBigTasks = new List<TaskObj<BigTasks>>(0);
 
         public Day() { }
 
@@ -20,14 +33,17 @@ public class TaskGeneration : MonoBehaviour
         {
             FormDay(num);
 
-            DaysHomeTasks.AddRange(tasks);
+            foreach (var task in tasks)
+            {
+                DaysHomeTasks.Add(new TaskObj<HomeTasks>(task));
+            }
         }
 
         public Day(int num, HomeTasks task)
         {
             FormDay(num);
 
-            DaysHomeTasks.Add(task);
+            DaysHomeTasks.Add(new TaskObj<HomeTasks>(task));
         }
 
         public void FormDay(int num)
@@ -37,12 +53,12 @@ public class TaskGeneration : MonoBehaviour
             if (number % 3 == 0 || number % 2 == 0)
             {
                 // Days: 2, 3, 4, 6, 8, 9, 10, 12, 14
-                DaysBigTasks.Add(BigTasks.Working);
+                DaysBigTasks.Add(new TaskObj<BigTasks>(BigTasks.Working));
             }
             else
             {
                 // Days: 1, 5, 7, 11, 13
-                DaysBigTasks.Add(BigTasks.Shopping);
+                DaysBigTasks.Add(new TaskObj<BigTasks>(BigTasks.Shopping));
             }
         }
     }
@@ -147,7 +163,6 @@ public class TaskGeneration : MonoBehaviour
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        // prideti saugojima ar kiekviena uzduotis buvo ivykdyta
         // saugoti nustatymus
         // saugoti zaidejo esama vieta
 
@@ -198,7 +213,6 @@ public class TaskGeneration : MonoBehaviour
         formatter.Serialize(stream, GameDataObject);
         stream.Close();
     }
-
 
     public static void DeleteLevelData()
     {
