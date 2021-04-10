@@ -115,6 +115,7 @@ public class PhoneUIManager : MonoBehaviour
             case "Small" when SettingsInfo.SettingsObject.CursorSize != SettingSaving.CursorSize.Small:
                 SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Small;
                 Cursor.SetCursor(CursorTextures[0], Vector2.zero, CursorMode.Auto);
+                //ClickSound.Play();
                 CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallActivated");
                 CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
                 CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
@@ -124,6 +125,7 @@ public class PhoneUIManager : MonoBehaviour
             case "Medium" when SettingsInfo.SettingsObject.CursorSize != SettingSaving.CursorSize.Medium:
                 SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Medium;
                 Cursor.SetCursor(CursorTextures[1], Vector2.zero, CursorMode.Auto);
+                //ClickSound.Play();
                 CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
                 CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumActivated");
                 CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
@@ -133,6 +135,7 @@ public class PhoneUIManager : MonoBehaviour
             case "Big" when SettingsInfo.SettingsObject.CursorSize != SettingSaving.CursorSize.Big:
                 SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Big;
                 Cursor.SetCursor(CursorTextures[2], Vector2.zero, CursorMode.Auto);
+                //ClickSound.Play();
                 CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
                 CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
                 CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigActivated");

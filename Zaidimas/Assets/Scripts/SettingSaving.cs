@@ -29,6 +29,8 @@ public class SettingSaving : MonoBehaviour
         }
     }
 
+    //-------------------------------------------------------------------
+
     public enum CursorSize
     {
         Small,

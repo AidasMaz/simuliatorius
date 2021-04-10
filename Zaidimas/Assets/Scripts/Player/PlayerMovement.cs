@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Rigid body")]
     public Rigidbody2D rigidbody;
-    
+
     private Vector2 movement;
 
     [Header("Animators")]
@@ -52,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && 
-            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_Alex_Phone_TakeOut" && 
+        if (Input.GetKeyDown(KeyCode.Escape) &&
+            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_Alex_Phone_TakeOut" &&
             animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_Alex_Phone_PutAway")
         {
             Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);

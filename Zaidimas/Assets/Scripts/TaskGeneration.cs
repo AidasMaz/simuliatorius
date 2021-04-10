@@ -199,20 +199,20 @@ public class TaskGeneration : MonoBehaviour
     // saugoti nustatymus
     // saugoti zaidejo esama vieta
 
-    void Start()
+    void Awake()
     {
         //Debug.Log(Application.persistentDataPath);
 
         string path = Application.persistentDataPath + "/" + LevelDataFileName;
         if (File.Exists(path))
         {
-            Debug.Log("Data will be loaded");
+            //Debug.Log("Data will be loaded");
             GameDataObject = LoadDayData();
             //GameDataObject.PrintOutDayList();
         }
         else
         {
-            Debug.Log("Data will be created");
+            //Debug.Log("Data will be created");
             GameDataObject = new GameData(true);
             //GameDataObject.PrintOutDayList();
             SaveLevelData();
@@ -224,7 +224,7 @@ public class TaskGeneration : MonoBehaviour
         string path = Application.persistentDataPath + "/" + LevelDataFileName;
         if (File.Exists(path))
         {
-            Debug.Log("Day data save file exists");
+            //Debug.Log("Day data save file exists");
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             GameData data = formatter.Deserialize(stream) as GameData;
@@ -233,7 +233,7 @@ public class TaskGeneration : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Day data save file was not found");
+            //Debug.LogWarning("Day data save file was not found");
             return null;
         }
     }
