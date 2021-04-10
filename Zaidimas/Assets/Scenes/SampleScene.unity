@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &93151058
 Transform:
   m_ObjectHideFlags: 0
@@ -2206,7 +2206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &195404423
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4449,7 +4449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &370300509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5793,7 +5793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &470646686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6306,47 +6306,19 @@ MonoBehaviour:
   GameDataObject:
     DayList:
     - number: 1
-      DaysHomeTasks: 00000000
-      DaysBigTasks: 01000000
     - number: 2
-      DaysHomeTasks: 03000000
-      DaysBigTasks: 00000000
     - number: 3
-      DaysHomeTasks: 02000000
-      DaysBigTasks: 00000000
     - number: 4
-      DaysHomeTasks: 01000000
-      DaysBigTasks: 00000000
     - number: 5
-      DaysHomeTasks: 03000000
-      DaysBigTasks: 01000000
     - number: 6
-      DaysHomeTasks: 02000000
-      DaysBigTasks: 00000000
     - number: 7
-      DaysHomeTasks: 0000000001000000
-      DaysBigTasks: 01000000
     - number: 8
-      DaysHomeTasks: 0000000003000000
-      DaysBigTasks: 00000000
     - number: 9
-      DaysHomeTasks: 0100000002000000
-      DaysBigTasks: 00000000
     - number: 10
-      DaysHomeTasks: 0300000000000000
-      DaysBigTasks: 00000000
     - number: 11
-      DaysHomeTasks: 0100000002000000
-      DaysBigTasks: 01000000
     - number: 12
-      DaysHomeTasks: 0100000002000000
-      DaysBigTasks: 00000000
     - number: 13
-      DaysHomeTasks: 0000000003000000
-      DaysBigTasks: 01000000
     - number: 14
-      DaysHomeTasks: 0200000001000000
-      DaysBigTasks: 00000000
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14682,7 +14654,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 648f45801db2a374e8fd040477248c6d, type: 3}
   - {fileID: 2800000, guid: 6b6f554f6b7380a4b89a2d27aef6e1b5, type: 3}
   - {fileID: 2800000, guid: 72f5d00014ef1404eba96fef4ec31244, type: 3}
-  GameDaysInfo: {fileID: 0}
+  GameDaysInfo: {fileID: 513881117}
+  SettingsInfo: {fileID: 1073394317}
 --- !u!4 &1064381455
 Transform:
   m_ObjectHideFlags: 0
@@ -14697,6 +14670,53 @@ Transform:
   m_Father: {fileID: 1763710585}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1073394315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073394316}
+  - component: {fileID: 1073394317}
+  m_Layer: 0
+  m_Name: SettingsSaving
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1073394316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073394315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1763710585}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1073394317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073394315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba4abf2d112f044ba027005658f98a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingsObject:
+    MusicVolume: 0.5
+    SoundVolume: 0.5
+    CursorSize: 1
 --- !u!1 &1075237647
 GameObject:
   m_ObjectHideFlags: 0
@@ -15875,7 +15895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1146697963
 Transform:
   m_ObjectHideFlags: 0
@@ -16319,7 +16339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1232828360
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17783,6 +17803,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1384847578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384847579}
+  - component: {fileID: 1384847580}
+  m_Layer: 0
+  m_Name: PlayerSaving
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1384847579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384847578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1763710585}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384847580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384847578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b200dddff63c4214ba41105fb297b413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1386393371
 GameObject:
   m_ObjectHideFlags: 0
@@ -18379,7 +18442,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: medium
+          m_StringArgument: Medium
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1421759321
@@ -18694,7 +18757,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: big
+          m_StringArgument: Big
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1431777053
@@ -20860,7 +20923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1705010688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21731,6 +21794,8 @@ Transform:
   - {fileID: 1146697963}
   - {fileID: 1064381455}
   - {fileID: 513881116}
+  - {fileID: 1073394316}
+  - {fileID: 1384847579}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26489,7 +26554,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: small
+          m_StringArgument: Small
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1948915355

@@ -46,6 +46,7 @@ public class PhoneUIManager : MonoBehaviour
 
     [Header("Managers")]
     public TaskGeneration GameDaysInfo;
+    public SettingSaving SettingsInfo;
 
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -57,6 +58,12 @@ public class PhoneUIManager : MonoBehaviour
         // player level
         // player picture
         // phone case
+    }
+
+    private void Start()
+    {
+        SettingsInfo.InitializeSettings();
+        SetCursorSize(SettingsInfo.SettingsObject.CursorSize.ToString());
     }
 
     //--------------------------------------------
@@ -105,27 +112,36 @@ public class PhoneUIManager : MonoBehaviour
     {
         switch (size)
         {
-            case "small":
+            case "Small" when SettingsInfo.SettingsObject.CursorSize != SettingSaving.CursorSize.Small:
+                SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Small;
                 Cursor.SetCursor(CursorTextures[0], Vector2.zero, CursorMode.Auto);
                 CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallActivated");
                 CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
                 CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
+                Debug.Log("Cursor size set to: " + SettingsInfo.SettingsObject.CursorSize);
                 break;
-            case "medium":
+
+            case "Medium" when SettingsInfo.SettingsObject.CursorSize != SettingSaving.CursorSize.Medium:
+                SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Medium;
                 Cursor.SetCursor(CursorTextures[1], Vector2.zero, CursorMode.Auto);
                 CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
                 CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumActivated");
                 CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
+                Debug.Log("Cursor size set to: " + SettingsInfo.SettingsObject.CursorSize);
                 break;
-            case "big":
+
+            case "Big" when SettingsInfo.SettingsObject.CursorSize != SettingSaving.CursorSize.Big:
+                SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Big;
                 Cursor.SetCursor(CursorTextures[2], Vector2.zero, CursorMode.Auto);
                 CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
                 CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
                 CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigActivated");
+                Debug.Log("Cursor size set to: " + SettingsInfo.SettingsObject.CursorSize);
                 break;
+
         }
 
-        // save data
+        SettingsInfo.SaveSettingsData();
     }
 
     //--------------------------------------------
