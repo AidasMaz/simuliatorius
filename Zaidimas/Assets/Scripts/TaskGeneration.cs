@@ -11,12 +11,12 @@ public class TaskGeneration : MonoBehaviour
     public class TaskObj<T>
     {
         public T Task;
-        public bool Done;
+        public TaskStatus Status;
 
         public TaskObj(T task)
         {
             Task = task;
-            Done = false;
+            Status = TaskStatus.New;
         }
     }
 
@@ -190,14 +190,18 @@ public class TaskGeneration : MonoBehaviour
         Shopping
     }
 
+    public enum TaskStatus
+    {
+        Done,
+        Failed,
+        New
+    }
+
     public GameData GameDataObject;
 
     public static string LevelDataFileName = "dayData.v1";
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // saugoti nustatymus
-    // saugoti zaidejo esama vieta
 
     void Awake()
     {

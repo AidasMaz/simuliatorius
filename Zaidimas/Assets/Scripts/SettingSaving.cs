@@ -47,13 +47,13 @@ public class SettingSaving : MonoBehaviour
     void Awake()
     {
         // namo daiktu ir uzduociu valdymo scriptas
-        // telefono UI
+        //+ telefono UI
         // zaidejo keliavimo scriptas
         //+ animuoti objektai name
-        // zaidejo duomenu saugojimo scriptas
+        //+ zaidejo duomenu saugojimo scriptas
         //+ nustatymu saugojimo scriptas
-        // padaryti colliderius static
-        // patestuoti ir paoptimizuoti teksturas ir scriptus
+        //+ padaryti colliderius static
+        //+ patestuoti ir paoptimizuoti teksturas ir scriptus
     }
 
     public void InitializeSettings()
@@ -109,5 +109,4 @@ public class SettingSaving : MonoBehaviour
         if (File.Exists(levelPath))
             File.Delete(levelPath);
     }
-
 }

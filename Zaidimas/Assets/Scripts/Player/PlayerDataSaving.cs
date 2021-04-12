@@ -7,9 +7,89 @@ using UnityEngine;
 
 public class PlayerDataSaving : MonoBehaviour
 {
-    void Awake()
+    [System.Serializable]
+    public class Player
     {
-        
+        public int CurrentDay;
+        public string Name;
+        public int Level;
+        public string PhoneColor;
+
+        public Player(string name)
+        {
+            CurrentDay = 1;
+            Level = 1;
+            Name = name;
+
+            //switch (name)
+            //{
+            //    case "":
+            //        PhoneColor = "White";
+            //            break;
+            //    case "":
+            //        PhoneColor = "Green";
+            //        break;
+            //    case "":
+            //        PhoneColor = "Purple";
+            //        break;
+            //}
+        }
     }
 
+    public Player PlayerDataObject;
+
+    public static string PlayerFileName = "player.v1";
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    public void CreatePlayerData(string playerName)
+    {
+        string path = Application.persistentDataPath + "/" + PlayerFileName;
+        if (File.Exists(path))
+        {
+            Debug.Log("Payer data already exists");
+            Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay);
+        }
+        else
+        {
+            //Debug.Log("Payer data will be created");
+            PlayerDataObject = new Player(playerName);
+            SavePlayerData();
+            //Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay);
+        }
+    }
+
+    public void LoadPlayerData()
+    {
+        string path = Application.persistentDataPath + "/" + PlayerFileName;
+        if (File.Exists(path))
+        {
+            //Debug.Log("Player data save file exists");
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            PlayerDataObject = formatter.Deserialize(stream) as Player;
+            stream.Close();
+        }
+        else
+        {
+            Debug.LogWarning("Player data save file was not found");
+        }
+    }
+
+    public void SavePlayerData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/" + PlayerFileName;
+        FileStream stream = new FileStream(path, FileMode.Create);
+        formatter.Serialize(stream, PlayerDataObject);
+        stream.Close();
+    }
+
+    public static void DeletePlayerData()
+    {
+        string levelPath = Application.persistentDataPath + "/" + PlayerFileName;
+
+        if (File.Exists(levelPath))
+            File.Delete(levelPath);
+    }
 }
