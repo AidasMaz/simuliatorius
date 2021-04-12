@@ -48,7 +48,8 @@ public class PlayerDataSaving : MonoBehaviour
         if (File.Exists(path))
         {
             Debug.Log("Payer data already exists");
-            Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay);
+            LoadPlayerData();
+            Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay + " Level: " + PlayerDataObject.Level);
         }
         else
         {

@@ -57,17 +57,21 @@ public class PhoneUIManager : MonoBehaviour
 
     private void Start()
     {
+        //isimti kai bus menu scena
+        PlayerInfo.CreatePlayerData("Alex");
+
+        PlayerInfo.LoadPlayerData();
         GameDaysInfo.InitializeDayData();
+        SettingsInfo.InitializeSettings();
+
         SetTaskImages();
         UpdateCalendarNumberForCalendar();
-
-        SettingsInfo.InitializeSettings();
+        
         MusicSlider.value = SettingsInfo.SettingsObject.MusicVolume;
         SoundSlider.value = SettingsInfo.SettingsObject.SoundVolume;
         SetCursorSize(SettingsInfo.SettingsObject.CursorSize.ToString(), true);
         //Cursor.lockState = CursorLockMode.Confined;
-
-        PlayerInfo.LoadPlayerData();
+       
         UpdateCalendarNumberForMain();
         SetPhoneCase();
         SetSaveWindowObjects();
@@ -75,14 +79,22 @@ public class PhoneUIManager : MonoBehaviour
 
     public void UpdateCalendarNumberForMain()
     {
-        int num = PlayerInfo.PlayerDataObject.CurrentDay;
-        CalendarNumberForMain.sprite = Resources.Load<Sprite>("Images/test");
+        int num = 10;// PlayerInfo.PlayerDataObject.CurrentDay;
+        if (num < 10)
+            CalendarNumberForMain.sprite = Resources.LoadAll<Sprite>("UI/Multi-use objects/Numbers/numbersSingleDigit")[num];
+        else
+            CalendarNumberForMain.sprite = Resources.LoadAll<Sprite>("UI/Multi-use objects/Numbers/numbersTwoDigit")[num - 10];
+        CalendarNumberForMain.preserveAspect = true;
     }
 
     public void UpdateCalendarNumberForCalendar()
     {
         int num = PlayerInfo.PlayerDataObject.CurrentDay;
-        CalendarNumberForCalendar.sprite = Resources.Load<Sprite>("Images/test");
+        if (num < 10)
+            CalendarNumberForCalendar.sprite = Resources.LoadAll<Sprite>("UI/Multi-use objects/Numbers/numbersSingleDigit")[num];
+        else
+            CalendarNumberForCalendar.sprite = Resources.LoadAll<Sprite>("UI/Multi-use objects/Numbers/numbersTwoDigit")[num - 10];
+        CalendarNumberForCalendar.preserveAspect = true;
     }
 
     public void SetPhoneCase()
@@ -110,10 +122,23 @@ public class PhoneUIManager : MonoBehaviour
     public void SetSaveWindowObjects()
     {
         int lvl = PlayerInfo.PlayerDataObject.Level;
-        LevelImage.sprite = Resources.Load<Sprite>("Images/test");
+        LevelImage.sprite = Resources.LoadAll<Sprite>("UI/Saving objects/levelIcons")[lvl - 1];
+        LevelImage.preserveAspect = true;
 
         string name = PlayerInfo.PlayerDataObject.Name;
-        PlayerImage.sprite = Resources.Load<Sprite>("Images/test");
+        switch (name)
+        {
+            case "Alex":
+                PlayerImage.sprite = Resources.LoadAll<Sprite>("UI/Saving objects/characters")[2];
+                break;
+            case "Molly":
+                PlayerImage.sprite = Resources.LoadAll<Sprite>("UI/Saving objects/characters")[1];
+                break;
+            case "Rob":
+                PlayerImage.sprite = Resources.LoadAll<Sprite>("UI/Saving objects/characters")[0];
+                break;
+        }
+        PlayerImage.preserveAspect = true;
     }
 
     public void SetTaskImages()
@@ -132,9 +157,9 @@ public class PhoneUIManager : MonoBehaviour
             {
                 // big task
                 if (day.DaysBigTasks.First().Task == TaskGeneration.BigTasks.Shopping)
-                    BigTaskImage.sprite = Resources.Load<Sprite>("Images/test");
-                else
-                    BigTaskImage.sprite = Resources.Load<Sprite>("Images/test");
+                    BigTaskImage.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[2];
+                else if (day.DaysBigTasks.First().Task == TaskGeneration.BigTasks.Working)
+                    BigTaskImage.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[5];
 
                 switch (day.DaysBigTasks.First().Status)
                 {
@@ -150,16 +175,16 @@ public class PhoneUIManager : MonoBehaviour
                 switch (day.DaysHomeTasks.First().Task)
                 {
                     case TaskGeneration.HomeTasks.Dishes:
-                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
+                        HomeTaskLine1Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[0];
                         break;
                     case TaskGeneration.HomeTasks.Ducks:
-                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
+                        HomeTaskLine1Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[4];
                         break;
                     case TaskGeneration.HomeTasks.Trashes:
-                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
+                        HomeTaskLine1Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[3];
                         break;
                     case TaskGeneration.HomeTasks.ToiletPapper:
-                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
+                        HomeTaskLine1Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[1];
                         break;
                 }
 
@@ -178,16 +203,16 @@ public class PhoneUIManager : MonoBehaviour
                     switch (day.DaysHomeTasks.ElementAt(1).Task)
                     {
                         case TaskGeneration.HomeTasks.Dishes:
-                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
+                            HomeTaskLine2Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[0];
                             break;
                         case TaskGeneration.HomeTasks.Ducks:
-                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
+                            HomeTaskLine2Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[4];
                             break;
                         case TaskGeneration.HomeTasks.Trashes:
-                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
+                            HomeTaskLine2Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[3];
                             break;
                         case TaskGeneration.HomeTasks.ToiletPapper:
-                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
+                            HomeTaskLine2Image.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[1];
                             break;
                     }
 
@@ -278,9 +303,10 @@ public class PhoneUIManager : MonoBehaviour
                 SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Small;
                 Cursor.SetCursor(CursorTextures[0], Vector2.zero, CursorMode.Auto);
                 //ClickSound.Play();
-                CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallActivated");
-                CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
-                CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
+                Debug.Log(Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI").Length);
+                CursorSizeSmallButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[0];
+                CursorSizeMediumButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[4];
+                CursorSizeBigButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[5];
 
                 //Debug.Log("Cursor size set to: " + SettingsInfo.SettingsObject.CursorSize);
                 // Jei norim saugoti po kiekvieno paspaudimo
@@ -291,9 +317,9 @@ public class PhoneUIManager : MonoBehaviour
                 SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Medium;
                 Cursor.SetCursor(CursorTextures[1], Vector2.zero, CursorMode.Auto);
                 //ClickSound.Play();
-                CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
-                CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumActivated");
-                CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigDeactivated");
+                CursorSizeSmallButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[3];
+                CursorSizeMediumButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[1];
+                CursorSizeBigButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[5];
                 //Debug.Log("Cursor size set to: " + SettingsInfo.SettingsObject.CursorSize);
                 // Jei norim saugoti po kiekvieno paspaudimo
                 SettingsInfo.SaveSettingsData();
@@ -303,9 +329,9 @@ public class PhoneUIManager : MonoBehaviour
                 SettingsInfo.SettingsObject.CursorSize = SettingSaving.CursorSize.Big;
                 Cursor.SetCursor(CursorTextures[2], Vector2.zero, CursorMode.Auto);
                 //ClickSound.Play();
-                CursorSizeSmallButton.image = Resources.Load<Image>("Settings/CursorButtonSmallDeactivated");
-                CursorSizeMediumButton.image = Resources.Load<Image>("Settings/CursorButtonMediumDeactivated");
-                CursorSizeBigButton.image = Resources.Load<Image>("Settings/CursorButtonBigActivated");
+                CursorSizeSmallButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[3];
+                CursorSizeMediumButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[4];
+                CursorSizeBigButton.image.sprite = Resources.LoadAll<Sprite>("UI/Option objects/cursorButtonUI")[2];
                 //Debug.Log("Cursor size set to: " + SettingsInfo.SettingsObject.CursorSize);
                 // Jei norim saugoti po kiekvieno paspaudimo
                 SettingsInfo.SaveSettingsData();
