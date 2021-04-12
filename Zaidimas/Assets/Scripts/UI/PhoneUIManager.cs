@@ -16,25 +16,21 @@ public class PhoneUIManager : MonoBehaviour
 
     [Header("Windows")]
     public GameObject MainWindow;
-    public Image[] CalendarNumbersForMain;
+    public Image CalendarNumberForMain;
     [Space]
     public GameObject MapWindow;
     [Space]
     public GameObject SaveWindow;
-    public Image Level1Image;
-    public Image Level2Image;
-    public Image Level3Image;
-    public Image Player1Image;
-    public Image Player2Image;
-    public Image Player3Image;
+    public Image LevelImage;
+    public Image PlayerImage;
     [Space]
     public GameObject TasksWindow;
-    public Image[] CalendarNumbersForCalendar;
+    public Image CalendarNumberForCalendar;
     public Image[] TaskDoneImages;
     public Image[] TaskFailedImages;
-    public Image[] BigTaskImages;
-    public Image[] HomeTaskLine1Images;
-    public Image[] HomeTaskLine2Images;
+    public Image BigTaskImage;
+    public Image HomeTaskLine1Image;
+    public Image HomeTaskLine2Image;
     [Space]
     public GameObject SettingsWindow;
     public Slider MusicSlider;
@@ -61,6 +57,10 @@ public class PhoneUIManager : MonoBehaviour
 
     private void Start()
     {
+        GameDaysInfo.InitializeDayData();
+        SetTaskImages();
+        UpdateCalendarNumberForCalendar();
+
         SettingsInfo.InitializeSettings();
         MusicSlider.value = SettingsInfo.SettingsObject.MusicVolume;
         SoundSlider.value = SettingsInfo.SettingsObject.SoundVolume;
@@ -68,35 +68,21 @@ public class PhoneUIManager : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Confined;
 
         PlayerInfo.LoadPlayerData();
-        UpdateCalendarNumbersForMain();
-        UpdateCalendarNumbersForCalendar();
+        UpdateCalendarNumberForMain();
         SetPhoneCase();
         SetSaveWindowObjects();
-
-        //paleisti tasku script
-        SetTaskImages();
     }
 
-    public void UpdateCalendarNumbersForMain()
+    public void UpdateCalendarNumberForMain()
     {
-        for (int i = 0; i < 14; i++)
-        {
-            if (PlayerInfo.PlayerDataObject.CurrentDay == i + 1)
-                CalendarNumbersForMain[i].enabled = true;
-            else
-                CalendarNumbersForMain[i].enabled = false;
-        }
+        int num = PlayerInfo.PlayerDataObject.CurrentDay;
+        CalendarNumberForMain.sprite = Resources.Load<Sprite>("Images/test");
     }
 
-    public void UpdateCalendarNumbersForCalendar()
+    public void UpdateCalendarNumberForCalendar()
     {
-        for (int i = 0; i < 14; i++)
-        {
-            if (PlayerInfo.PlayerDataObject.CurrentDay == i + 1)
-                CalendarNumbersForCalendar[i].enabled = true;
-            else
-                CalendarNumbersForCalendar[i].enabled = false;
-        }
+        int num = PlayerInfo.PlayerDataObject.CurrentDay;
+        CalendarNumberForCalendar.sprite = Resources.Load<Sprite>("Images/test");
     }
 
     public void SetPhoneCase()
@@ -123,43 +109,11 @@ public class PhoneUIManager : MonoBehaviour
 
     public void SetSaveWindowObjects()
     {
-        switch (PlayerInfo.PlayerDataObject.Level)
-        {
-            case 1:
-                Level1Image.enabled = true;
-                Level2Image.enabled = false;
-                Level3Image.enabled = false;
-                break;
-            case 2:
-                Level1Image.enabled = false;
-                Level2Image.enabled = true;
-                Level3Image.enabled = false;
-                break;
-            case 3:
-                Level1Image.enabled = false;
-                Level2Image.enabled = false;
-                Level3Image.enabled = true;
-                break;
-        }
+        int lvl = PlayerInfo.PlayerDataObject.Level;
+        LevelImage.sprite = Resources.Load<Sprite>("Images/test");
 
-        switch (PlayerInfo.PlayerDataObject.Name)
-        {
-            case "":
-                Player1Image.enabled = true;
-                Player2Image.enabled = false;
-                Player3Image.enabled = false;
-                break;
-            case "":
-                Player1Image.enabled = false;
-                Player2Image.enabled = true;
-                Player3Image.enabled = false;
-                break;
-            case "":
-                Player1Image.enabled = false;
-                Player2Image.enabled = false;
-                Player3Image.enabled = true;
-                break;
-        }
+        string name = PlayerInfo.PlayerDataObject.Name;
+        PlayerImage.sprite = Resources.Load<Sprite>("Images/test");
     }
 
     public void SetTaskImages()
@@ -170,28 +124,17 @@ public class PhoneUIManager : MonoBehaviour
             TaskDoneImages[i].enabled = false;
             TaskFailedImages[i].enabled = false;
         }
-        for (int i = 0; i < 2; i++)
-        {
-            BigTaskImages[i].enabled = false;
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            HomeTaskLine1Images[i].enabled = false;
-            HomeTaskLine1Images[i].enabled = false;
-        }
 
-        //settings
+        // showing
         foreach (var day in GameDaysInfo.GameDataObject.DayList)
         {
             if (day.number == PlayerInfo.PlayerDataObject.CurrentDay)
             {
-                // cia negerai -------------------------------------------------------------------------------------------
-                // kam cia viskas cikle? gal uztenka paimti viena objekta ir su juo ziasti kad kvietinet nereiktu?
                 // big task
                 if (day.DaysBigTasks.First().Task == TaskGeneration.BigTasks.Shopping)
-                    BigTaskImages[0].enabled = true;
+                    BigTaskImage.sprite = Resources.Load<Sprite>("Images/test");
                 else
-                    BigTaskImages[1].enabled = true;
+                    BigTaskImage.sprite = Resources.Load<Sprite>("Images/test");
 
                 switch (day.DaysBigTasks.First().Status)
                 {
@@ -207,16 +150,16 @@ public class PhoneUIManager : MonoBehaviour
                 switch (day.DaysHomeTasks.First().Task)
                 {
                     case TaskGeneration.HomeTasks.Dishes:
-                        HomeTaskLine1Images[0].enabled = true;
+                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
                         break;
                     case TaskGeneration.HomeTasks.Ducks:
-                        HomeTaskLine1Images[1].enabled = true;
+                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
                         break;
                     case TaskGeneration.HomeTasks.Trashes:
-                        HomeTaskLine1Images[2].enabled = true;
+                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
                         break;
                     case TaskGeneration.HomeTasks.ToiletPapper:
-                        HomeTaskLine1Images[3].enabled = true;
+                        HomeTaskLine1Image.sprite = Resources.Load<Sprite>("Images/test");
                         break;
                 }
 
@@ -235,16 +178,16 @@ public class PhoneUIManager : MonoBehaviour
                     switch (day.DaysHomeTasks.ElementAt(1).Task)
                     {
                         case TaskGeneration.HomeTasks.Dishes:
-                            HomeTaskLine2Images[0].enabled = true;
+                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
                             break;
                         case TaskGeneration.HomeTasks.Ducks:
-                            HomeTaskLine2Images[1].enabled = true;
+                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
                             break;
                         case TaskGeneration.HomeTasks.Trashes:
-                            HomeTaskLine2Images[2].enabled = true;
+                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
                             break;
                         case TaskGeneration.HomeTasks.ToiletPapper:
-                            HomeTaskLine2Images[3].enabled = true;
+                            HomeTaskLine2Image.sprite = Resources.Load<Sprite>("Images/test");
                             break;
                     }
 
@@ -269,7 +212,7 @@ public class PhoneUIManager : MonoBehaviour
     {
         //ClickSound.Play();
 
-        UpdateCalendarNumbersForMain();
+        UpdateCalendarNumberForMain();
 
         //MainWindow.SetActive(true);
         //MapWindow.SetActive(false);
@@ -303,9 +246,8 @@ public class PhoneUIManager : MonoBehaviour
     {
         //ClickSound.Play();
 
-        UpdateCalendarNumbersForCalendar();
-
-        // uzkrauti uzduotis
+        UpdateCalendarNumberForCalendar();
+        SetTaskImages();
 
         //MainWindow.SetActive(false);
         //TasksWindow.SetActive(true);
@@ -375,7 +317,8 @@ public class PhoneUIManager : MonoBehaviour
 
     public void SaveAndQuit()
     {
-        // Issaugoti progresa
+        PlayerInfo.SavePlayerData();
+        GameDaysInfo.SaveLevelData();
 
         Application.Quit();
     }

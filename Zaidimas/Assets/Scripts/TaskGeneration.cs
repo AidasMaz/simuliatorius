@@ -161,12 +161,12 @@ public class TaskGeneration : MonoBehaviour
             foreach (var day in DayList)
             {
                 stream.WriteLine("\n" + day.number);
-                stream.WriteLine("Main task: " + day.DaysBigTasks.First().Task.ToString() + " (" + day.DaysBigTasks.First().Done + ")");
+                stream.WriteLine("Main task: " + day.DaysBigTasks.First().Task.ToString() + " (" + day.DaysBigTasks.First().Status + ")");
                 //Debug.Log(day.number);
                 //Debug.Log("HomeTaskCapacity: " + day.DaysHomeTasks.Capacity);
                 foreach (var task in day.DaysHomeTasks)
                 {
-                    stream.WriteLine("Other tasks: " + task.Task.ToString() + " (" + task.Done + ")");
+                    stream.WriteLine("Other tasks: " + task.Task.ToString() + " (" + task.Status + ")");
                 }
             }
             stream.WriteLine("---------------------------");
@@ -206,7 +206,10 @@ public class TaskGeneration : MonoBehaviour
     void Awake()
     {
         //Debug.Log(Application.persistentDataPath);
+    }
 
+    public void InitializeDayData()
+    {
         string path = Application.persistentDataPath + "/" + LevelDataFileName;
         if (File.Exists(path))
         {

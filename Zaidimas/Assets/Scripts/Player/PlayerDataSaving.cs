@@ -21,18 +21,18 @@ public class PlayerDataSaving : MonoBehaviour
             Level = 1;
             Name = name;
 
-            //switch (name)
-            //{
-            //    case "":
-            //        PhoneColor = "White";
-            //            break;
-            //    case "":
-            //        PhoneColor = "Green";
-            //        break;
-            //    case "":
-            //        PhoneColor = "Purple";
-            //        break;
-            //}
+            switch (name)
+            {
+                case "Alex":
+                    PhoneColor = "White";
+                    break;
+                case "Rob":
+                    PhoneColor = "Green";
+                    break;
+                case "Molly":
+                    PhoneColor = "Purple";
+                    break;
+            }
         }
     }
 
