@@ -11,9 +11,9 @@ public class cameraFollowing : MonoBehaviour
     [Range(0.1f, 5f)]
     public float ofsetForPhone;
     public bool ofset = false;
-    Vector2 desiredPosition;
+    private Vector2 desiredPosition;
 
-    //-------------------------------
+    //------------------------------------------
 
     public void SetTarget(string name)
     {
@@ -22,16 +22,16 @@ public class cameraFollowing : MonoBehaviour
         //    case "Alex":
         //        target = GameObject.Find("PLAYER(Clone)").transform;
         //        break;
-            //case "Molly":
-            //    target = GameObject.Find("PLAYER MOLLY(Clone)").transform;
-            //    break;
-            //case "Rob":
-            //    target = GameObject.Find("PLAYER ROB(Clone)").transform;
-            //    break;
-        //} 
+        //    case "Molly":
+        //        target = GameObject.Find("PLAYER MOLLY(Clone)").transform;
+        //        break;
+        //    case "Rob":
+        //        target = GameObject.Find("PLAYER ROB(Clone)").transform;
+        //        break;
+        //}
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (ofset)
         {
@@ -44,7 +44,7 @@ public class cameraFollowing : MonoBehaviour
             desiredPosition = new Vector2(target.position.x, target.position.y);
         }
 
-        Vector2 smoothedPosition = Vector2.Lerp(new Vector2(transform.position.x, transform.position.y ), desiredPosition, smoothSpeed * Time.deltaTime);
+        Vector2 smoothedPosition = Vector2.Lerp(new Vector2(transform.position.x, transform.position.y), desiredPosition, smoothSpeed * Time.deltaTime);
         transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, transform.position.z);
     }
 }
