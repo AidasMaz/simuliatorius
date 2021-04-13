@@ -48,11 +48,12 @@ public class PhoneUIManager : MonoBehaviour
     [Header("Variables and sprites")]
     public Texture2D[] CursorTextures;
 
-    [Header("Managers")]
+    [Header("Managers and controllers")]
     public TaskGeneration GameDaysInfo;
     public SettingSaving SettingsInfo;
     public PlayerDataSaving PlayerInfo;
     public TweeningPhone TweeningPhoneController;
+    public cameraFollowing CameraFollowingController;
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -81,6 +82,7 @@ public class PhoneUIManager : MonoBehaviour
     public void TakeOutPhone()
     {
         TweeningPhoneController.QuickMoveFromRight();
+        CameraFollowingController.ofset = true;
         Phone.SetActive(true);
         //TurnOnSound.Play();
     }
@@ -88,6 +90,7 @@ public class PhoneUIManager : MonoBehaviour
     public void PutAwayPhone()
     {
         TweeningPhoneController.QuickMoveToRight();
+        CameraFollowingController.ofset = false;
         //TurnOffSound.Play();
     }
 
