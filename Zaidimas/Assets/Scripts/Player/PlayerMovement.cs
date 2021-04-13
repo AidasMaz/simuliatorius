@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerStates State;
 
+    public PhoneUIManager PhoneUIManager;
+
     //--------------------------------
 
     private void Start()
@@ -61,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             switch (State)
             {
                 case PlayerStates.Walking:
+                    PhoneUIManager.TakeOutPhone();
                     movement = new Vector2(0, 0);
                     animator.SetFloat("Horizontal", 0);
                     animator.SetFloat("Vertical", 0);
@@ -73,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
                     State = PlayerStates.Mobile;
                     break;
                 case PlayerStates.Mobile:
+                    PhoneUIManager.PutAwayPhone();
                     animator.SetBool("Phone_TakeOut", false);
                     animator.SetBool("Phone_PutAway", true);
 

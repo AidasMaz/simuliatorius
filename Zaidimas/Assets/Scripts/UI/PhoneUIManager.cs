@@ -52,6 +52,7 @@ public class PhoneUIManager : MonoBehaviour
     public TaskGeneration GameDaysInfo;
     public SettingSaving SettingsInfo;
     public PlayerDataSaving PlayerInfo;
+    public TweeningPhone TweeningPhoneController;
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -66,15 +67,28 @@ public class PhoneUIManager : MonoBehaviour
 
         SetTaskImages();
         UpdateCalendarNumberForCalendar();
-        
+
         MusicSlider.value = SettingsInfo.SettingsObject.MusicVolume;
         SoundSlider.value = SettingsInfo.SettingsObject.SoundVolume;
         SetCursorSize(SettingsInfo.SettingsObject.CursorSize.ToString(), true);
         //Cursor.lockState = CursorLockMode.Confined;
-       
+
         UpdateCalendarNumberForMain();
         SetPhoneCase();
         SetSaveWindowObjects();
+    }
+
+    public void TakeOutPhone()
+    {
+        TweeningPhoneController.QuickMoveFromRight();
+        Phone.SetActive(true);
+        //TurnOnSound.Play();
+    }
+
+    public void PutAwayPhone()
+    {
+        TweeningPhoneController.QuickMoveToRight();
+        //TurnOffSound.Play();
     }
 
     public void UpdateCalendarNumberForMain()
@@ -239,32 +253,32 @@ public class PhoneUIManager : MonoBehaviour
 
         UpdateCalendarNumberForMain();
 
-        //MainWindow.SetActive(true);
-        //MapWindow.SetActive(false);
-        //SaveWindow.SetActive(false);
-        //SettingsWindow.SetActive(false);
-        //TasksWindow.SetActive(false);
+        MainWindow.SetActive(true);
+        MapWindow.SetActive(false);
+        SaveWindow.SetActive(false);
+        SettingsWindow.SetActive(false);
+        TasksWindow.SetActive(false);
     }
 
     public void OpenMapWindow()
     {
         //ClickSound.Play();
-        //MainWindow.SetActive(false);
-        //MapWindow.SetActive(true);
+        MainWindow.SetActive(false);
+        MapWindow.SetActive(true);
     }
 
     public void OpenSaveWindow()
     {
         //ClickSound.Play();
-        //MainWindow.SetActive(false);
-        //SaveWindow.SetActive(true);
+        MainWindow.SetActive(false);
+        SaveWindow.SetActive(true);
     }
 
     public void OpenSettingsWindow()
     {
         //ClickSound.Play();
-        //MainWindow.SetActive(false);
-        //SettingsWindow.SetActive(true);
+        MainWindow.SetActive(false);
+        SettingsWindow.SetActive(true);
     }
 
     public void OpenTasksWindow()
@@ -274,8 +288,8 @@ public class PhoneUIManager : MonoBehaviour
         UpdateCalendarNumberForCalendar();
         SetTaskImages();
 
-        //MainWindow.SetActive(false);
-        //TasksWindow.SetActive(true);
+        MainWindow.SetActive(false);
+        TasksWindow.SetActive(true);
     }
 
     //--------------------------------------------
