@@ -25,10 +25,20 @@ public class PlayerMovement : MonoBehaviour
 
     public PhoneUIManager PhoneUIManager;
 
+
+    // gynimui nenaudoti
+    bool dishes;
+    public ParticleSystem particles;
+    public GameObject soap;
+    // gynimui nenaudoti
+
     //--------------------------------
 
     private void Start()
     {
+        // gynimui
+        //dishes = false;
+
         State = PlayerStates.Walking;
 
         animator.SetBool("Phone_TakeOut", false);
@@ -123,6 +133,37 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
+    // gynimui
+    //public void StartDoingDishes()
+    //{
+    //    if (dishes)
+    //    {
+    //        animator.SetBool("Dishes", true);
+    //        soap.SetActive(true);
+    //    }
+    //}
+
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.name == "Dishes obj")
+    //    {
+    //        dishes = true;
+    //    }
+    //}
+
+    //public void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    dishes = false;
+    //    soap.SetActive(false);
+    //    if (animator.GetBool("Dishes"))
+    //    {
+    //        particles.gameObject.SetActive(true);
+    //        particles.Play();
+    //    }
+    //    animator.SetBool("Dishes", false);
+    //}
 }
 
 

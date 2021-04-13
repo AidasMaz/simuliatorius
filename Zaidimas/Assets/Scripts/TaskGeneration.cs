@@ -215,13 +215,13 @@ public class TaskGeneration : MonoBehaviour
         {
             //Debug.Log("Data will be loaded");
             GameDataObject = LoadDayData();
-            //GameDataObject.PrintOutDayList();
+            GameDataObject.PrintOutDayList();
         }
         else
         {
             //Debug.Log("Data will be created");
             GameDataObject = new GameData(true);
-            //GameDataObject.PrintOutDayList();
+            GameDataObject.PrintOutDayList();
             SaveLevelData();
         }
     }
