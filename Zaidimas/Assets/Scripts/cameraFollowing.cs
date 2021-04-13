@@ -11,6 +11,22 @@ public class cameraFollowing : MonoBehaviour
 
     //-------------------------------
 
+    public void SetTarget(string name)
+    {
+        //switch (name)
+        //{
+        //    case "Alex":
+        //        target = GameObject.Find("PLAYER(Clone)").transform;
+        //        break;
+            //case "Molly":
+            //    target = GameObject.Find("PLAYER MOLLY(Clone)").transform;
+            //    break;
+            //case "Rob":
+            //    target = GameObject.Find("PLAYER ROB(Clone)").transform;
+            //    break;
+        //} 
+    }
+
     void FixedUpdate()
     {
         Vector2 desiredPosition = new Vector2(target.position.x, target.position.y);

@@ -38,7 +38,17 @@ public class PlayerDataSaving : MonoBehaviour
 
     public Player PlayerDataObject;
 
+    public GameObject AlexPrefab;
+    public GameObject MollyPrefab;
+    public GameObject RobPrefab;
+
+    public Vector3 SpawningPoint;
+
     public static string PlayerFileName = "player.v1";
+
+    //-------------------------------
+
+    public cameraFollowing CameraFollowing;
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -58,6 +68,21 @@ public class PlayerDataSaving : MonoBehaviour
             SavePlayerData();
             //Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay);
         }
+
+        //switch (playerName)
+        //{
+        //    case "Alex":
+        //        Instantiate(AlexPrefab, SpawningPoint, Quaternion.identity);
+        //        break;
+        //    case "Molly":
+        //        Instantiate(MollyPrefab, SpawningPoint, Quaternion.identity);
+        //        break;
+        //    case "Rob":
+        //        Instantiate(RobPrefab, SpawningPoint, Quaternion.identity);
+        //        break;
+        //}
+
+        CameraFollowing.SetTarget(playerName);
     }
 
     public void LoadPlayerData()
