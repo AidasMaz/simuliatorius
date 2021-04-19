@@ -24,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public PlayerStates State;
 
     public PhoneUIManager PhoneUIManager;
+    public PlayerDataSaving PlayerDataManager;
 
+    private string nameForPlayerAnimations;
 
     // gynimui nenaudoti
     bool dishes;
@@ -36,13 +38,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        // gynimui
-        //dishes = false;
+        nameForPlayerAnimations = PlayerDataManager.PlayerDataObject.Name;
 
         State = PlayerStates.Walking;
 
         animator.SetBool("Phone_TakeOut", false);
         animator.SetBool("Phone_PutAway", false);
+
+
+        // For second defence
+        //dishes = false;
 
         // For first defense
         //Instantiate(Resources.Load("prefab") as GameObject, 
@@ -65,8 +70,8 @@ public class PlayerMovement : MonoBehaviour
     private void HandleInputs()
     {
         if (Input.GetKeyDown(KeyCode.Escape) &&
-            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_Alex_Phone_TakeOut" &&
-            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_Alex_Phone_PutAway")
+            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_TakeOut" &&
+            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_PutAway")
         {
             Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
 
@@ -119,15 +124,23 @@ public class PlayerMovement : MonoBehaviour
             switch (info[0].clip.name)
             {
                 case "Player_Alex_Run_Front":
+                case "Player_Molly_Run_Front":
+                case "Player_Pier_Run_Front":
                     animator.SetFloat("Direction_Number", 0);
                     break;
                 case "Player_Alex_Run_Right":
+                case "Player_Molly_Run_Right":
+                case "Player_Pier_Run_Right":
                     animator.SetFloat("Direction_Number", 1);
                     break;
                 case "Player_Alex_Run_Back":
+                case "Player_Molly_Run_Back":
+                case "Player_Pier_Run_Back":
                     animator.SetFloat("Direction_Number", 2);
                     break;
                 case "Player_Alex_Run_Left":
+                case "Player_Molly_Run_Left":
+                case "Player_Pier_Run_Left":
                     animator.SetFloat("Direction_Number", 3);
                     break;
             }
