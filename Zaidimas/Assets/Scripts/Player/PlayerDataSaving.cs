@@ -69,18 +69,18 @@ public class PlayerDataSaving : MonoBehaviour
             //Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay);
         }
 
-        //switch (playerName)
-        //{
-        //    case "Alex":
-        //        Instantiate(AlexPrefab, SpawningPoint, Quaternion.identity);
-        //        break;
-        //    case "Molly":
-        //        Instantiate(MollyPrefab, SpawningPoint, Quaternion.identity);
-        //        break;
-        //    case "Rob":
-        //        Instantiate(RobPrefab, SpawningPoint, Quaternion.identity);
-        //        break;
-        //}
+        switch (playerName)
+        {
+            case "Alex":
+                Instantiate(AlexPrefab, SpawningPoint, Quaternion.identity);
+                break;
+            case "Molly":
+                Instantiate(MollyPrefab, SpawningPoint, Quaternion.identity);
+                break;
+            case "Rob":
+                Instantiate(RobPrefab, SpawningPoint, Quaternion.identity);
+                break;
+        }
 
         CameraFollowing.SetTarget(playerName);
     }

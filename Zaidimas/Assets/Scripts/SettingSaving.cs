@@ -59,6 +59,7 @@ public class SettingSaving : MonoBehaviour
     public void InitializeSettings()
     {
         string path = Application.persistentDataPath + "/" + SettingsFileName;
+        Debug.Log(Application.persistentDataPath);
         if (File.Exists(path))
         {
             //Debug.Log("Settings will be loaded");

@@ -17,18 +17,18 @@ public class cameraFollowing : MonoBehaviour
 
     public void SetTarget(string name)
     {
-        //switch (name)
-        //{
-        //    case "Alex":
-        //        target = GameObject.Find("PLAYER(Clone)").transform;
-        //        break;
-        //    case "Molly":
-        //        target = GameObject.Find("PLAYER MOLLY(Clone)").transform;
-        //        break;
-        //    case "Rob":
-        //        target = GameObject.Find("PLAYER ROB(Clone)").transform;
-        //        break;
-        //}
+        switch (name)
+        {
+            case "Alex":
+                target = GameObject.Find("PLAYER_ALEX(Clone)").transform;
+                break;
+            case "Molly":
+                target = GameObject.Find("PLAYER_MOLLY(Clone)").transform;
+                break;
+            case "Rob":
+                target = GameObject.Find("PLAYER_ROB(Clone)").transform;
+                break;
+        }
     }
 
     private void FixedUpdate()

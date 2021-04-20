@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        PhoneUIManager = GameObject.Find("Phone UI manager").GetComponent<PhoneUIManager>();
+        PlayerDataManager = GameObject.Find("PlayerSaving").GetComponent<PlayerDataSaving>();
         nameForPlayerAnimations = PlayerDataManager.PlayerDataObject.Name;
 
         State = PlayerStates.Walking;
