@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public enum PlayerStates
     {
         Walking,
-        Mobile
+        Mobile,
+        Chef
     }
 
     public PlayerStates State;
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("Phone_TakeOut", false);
         animator.SetBool("Phone_PutAway", false);
-
+        animator.SetBool("Chef_Mode", false);
 
         // For second defence
         //dishes = false;
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (State == PlayerStates.Walking)
+        if (State != PlayerStates.Mobile)
         {
             rigidbody.MovePosition(rigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
         }
@@ -71,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) &&
+        if (Input.GetKeyDown(KeyCode.Escape) && State != PlayerStates.Chef &&
             animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_TakeOut" &&
             animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_PutAway")
         {
@@ -101,9 +102,25 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Q) &&
+            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_TakeOut" &&
+            animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_PutAway")
+        {
+            switch (State)
+            {
+                case PlayerStates.Walking:
+                    State = PlayerStates.Chef;
+                    animator.SetBool("Chef_Mode", true);
+                    break;
+                case PlayerStates.Chef:
+                    State = PlayerStates.Walking;
+                    animator.SetBool("Chef_Mode", false);
+                    break;
+            }
+        }
         else
         {
-            if (State == PlayerStates.Walking)
+            if (State != PlayerStates.Mobile)
             {
                 HandleMovement();
             }
@@ -128,21 +145,33 @@ public class PlayerMovement : MonoBehaviour
                 case "Player_Alex_Run_Front":
                 case "Player_Molly_Run_Front":
                 case "Player_Rob_Run_Front":
+                case "Player_Alex_Chef_Run_Front":
+                case "Player_Molly_Chef_Run_Front":
+                case "Player_Rob_Chef_Run_Front":
                     animator.SetFloat("Direction_Number", 0);
                     break;
                 case "Player_Alex_Run_Right":
                 case "Player_Molly_Run_Right":
                 case "Player_Rob_Run_Right":
+                case "Player_Alex_Chef_Run_Right":
+                case "Player_Molly_Chef_Run_Right":
+                case "Player_Rob_Chef_Run_Right":
                     animator.SetFloat("Direction_Number", 1);
                     break;
                 case "Player_Alex_Run_Back":
                 case "Player_Molly_Run_Back":
                 case "Player_Rob_Run_Back":
+                case "Player_Alex_Chef_Run_Back":
+                case "Player_Molly_Chef_Run_Back":
+                case "Player_Rob_Chef_Run_Back":
                     animator.SetFloat("Direction_Number", 2);
                     break;
                 case "Player_Alex_Run_Left":
                 case "Player_Molly_Run_Left":
                 case "Player_Rob_Run_Left":
+                case "Player_Alex_Chef_Run_Left":
+                case "Player_Molly_Chef_Run_Left":
+                case "Player_Rob_Chef_Run_Left":
                     animator.SetFloat("Direction_Number", 3);
                     break;
             }

@@ -14,12 +14,14 @@ public class PlayerDataSaving : MonoBehaviour
         public string Name;
         public int Level;
         public string PhoneColor;
+        public string Place;
 
         public Player(string name)
         {
             CurrentDay = 1;
             Level = 1;
             Name = name;
+            Place = "Home";
 
             switch (name)
             {

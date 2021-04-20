@@ -60,7 +60,7 @@ public class PhoneUIManager : MonoBehaviour
     private void Start()
     {
         //isimti kai bus menu scena
-        PlayerInfo.CreatePlayerData("Molly");
+        PlayerInfo.CreatePlayerData("Rob");
 
         PlayerInfo.LoadPlayerData();
         GameDaysInfo.InitializeDayData();
