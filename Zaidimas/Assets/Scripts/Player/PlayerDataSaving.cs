@@ -113,7 +113,7 @@ public class PlayerDataSaving : MonoBehaviour
         stream.Close();
     }
 
-    public static void DeletePlayerData()
+    public void DeletePlayerData()
     {
         string levelPath = Application.persistentDataPath + "/" + PlayerFileName;
 

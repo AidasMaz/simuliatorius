@@ -103,7 +103,7 @@ public class SettingSaving : MonoBehaviour
         stream.Close();
     }
 
-    public static void DeleteSettingsData()
+    public void DeleteSettingsData()
     {
         string levelPath = Application.persistentDataPath + "/" + SettingsFileName;
 

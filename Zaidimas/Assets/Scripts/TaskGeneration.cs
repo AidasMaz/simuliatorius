@@ -254,7 +254,7 @@ public class TaskGeneration : MonoBehaviour
         stream.Close();
     }
 
-    public static void DeleteLevelData()
+    public void DeleteLevelData()
     {
         string levelPath = Application.persistentDataPath + "/" + LevelDataFileName;
 

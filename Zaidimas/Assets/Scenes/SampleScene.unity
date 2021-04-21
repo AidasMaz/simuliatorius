@@ -20431,6 +20431,8 @@ MonoBehaviour:
   PlayerInfo: {fileID: 1384847580}
   TweeningPhoneController: {fileID: 1428586105}
   CameraFollowingController: {fileID: 519420030}
+  PlayerInitiationName: Molly
+  DeleteLastInfo: 1
 --- !u!4 &1064381455
 Transform:
   m_ObjectHideFlags: 0

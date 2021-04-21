@@ -55,12 +55,23 @@ public class PhoneUIManager : MonoBehaviour
     public TweeningPhone TweeningPhoneController;
     public cameraFollowing CameraFollowingController;
 
+    [Header("Player initiation variables")]
+    public string PlayerInitiationName;
+    public bool DeleteLastInfo;
+
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     private void Start()
     {
         //isimti kai bus menu scena
-        PlayerInfo.CreatePlayerData("Rob");
+        if (DeleteLastInfo)
+        {
+            SettingsInfo.DeleteSettingsData();
+            PlayerInfo.DeletePlayerData();
+            GameDaysInfo.DeleteLevelData();
+        }
+        PlayerInfo.CreatePlayerData(PlayerInitiationName);
+        //isimti kai bus menu scena
 
         PlayerInfo.LoadPlayerData();
         GameDaysInfo.InitializeDayData();
