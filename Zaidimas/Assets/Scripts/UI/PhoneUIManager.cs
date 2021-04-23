@@ -19,6 +19,8 @@ public class PhoneUIManager : MonoBehaviour
     public Image CalendarNumberForMain;
     [Space]
     public GameObject MapWindow;
+    public GameObject MapNotificationNeedsHigherLevel;
+    public GameObject MapNotificationCanNotTeleport;
     [Space]
     public GameObject SaveWindow;
     public Image LevelImage;
@@ -47,6 +49,11 @@ public class PhoneUIManager : MonoBehaviour
     //---------------------------------
     [Header("Variables and sprites")]
     public Texture2D[] CursorTextures;
+    [Space]
+    public float NotificationShowingTime;
+    public bool canPressMapButtons;
+
+    private List<uint> timerIDs = new List<uint>();
 
     [Header("Managers and controllers")]
     public TaskGeneration GameDaysInfo;
@@ -88,6 +95,8 @@ public class PhoneUIManager : MonoBehaviour
         UpdateCalendarNumberForMain();
         SetPhoneCase();
         SetSaveWindowObjects();
+
+        canPressMapButtons = true;
     }
 
     public void TakeOutPhone()
@@ -104,6 +113,8 @@ public class PhoneUIManager : MonoBehaviour
         CameraFollowingController.ofset = false;
         //TurnOffSound.Play();
     }
+
+    //--------------------------------------------
 
     public void UpdateCalendarNumberForMain()
     {
@@ -308,6 +319,38 @@ public class PhoneUIManager : MonoBehaviour
 
     //--------------------------------------------
 
+    public void TryTravelToArea(string desiredTravelPlaceName)
+    {
+        if (canPressMapButtons)
+        {
+            //ClickSound.Play();
+            canPressMapButtons = false;
+
+            int lvl = PlayerInfo.PlayerDataObject.Level;
+            string currentPlaceName = PlayerInfo.PlayerDataObject.Place;
+
+            if (currentPlaceName == desiredTravelPlaceName)
+            {
+                Debug.Log("Is already here: " + desiredTravelPlaceName);
+                MapNotificationCanNotTeleport.SetActive(true);
+                timerIDs.Add(TimerManager.StartTimer(NotificationShowingTime, false, delegate { MapNotificationCanNotTeleport.SetActive(false); canPressMapButtons = true; }));
+            }
+            else if ((lvl == 1 && desiredTravelPlaceName == "Work") || (lvl < 3 && desiredTravelPlaceName == "Gym"))
+            {
+                Debug.Log("Level too low to travel to: " + desiredTravelPlaceName);
+                MapNotificationNeedsHigherLevel.SetActive(true);
+                timerIDs.Add(TimerManager.StartTimer(NotificationShowingTime, false, delegate { MapNotificationNeedsHigherLevel.SetActive(false); canPressMapButtons = true; }));
+            }
+            else
+            {
+                Debug.Log("Can travel");
+                //PutAwayPhone();
+                canPressMapButtons = true;
+                // ------------------------------------------------------------------++++++++++++++++++++
+            }
+        }
+    }
+
     public void SaveSliderVolume(string name)
     {
         if (name == "music")
@@ -375,5 +418,16 @@ public class PhoneUIManager : MonoBehaviour
         GameDaysInfo.SaveLevelData();
 
         Application.Quit();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (uint id in timerIDs)
+        {
+            if (TimerManager.TimeRemaining(id) > 0)
+            {
+                TimerManager.CancelTimer(id);
+            }
+        }
     }
 }
