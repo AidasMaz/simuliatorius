@@ -56,20 +56,7 @@ public class PlayerDataSaving : MonoBehaviour
 
     public void CreatePlayerData(string playerName)
     {
-        string path = Application.persistentDataPath + "/" + PlayerFileName;
-        if (File.Exists(path))
-        {
-            Debug.Log("Payer data already exists");
-            LoadPlayerData();
-            Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay + " Level: " + PlayerDataObject.Level);
-        }
-        else
-        {
-            //Debug.Log("Payer data will be created");
-            PlayerDataObject = new Player(playerName);
-            SavePlayerData();
-            //Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay);
-        }
+        InitializePlayerData(playerName);   
 
         switch (playerName)
         {
@@ -85,6 +72,24 @@ public class PlayerDataSaving : MonoBehaviour
         }
 
         CameraFollowing.SetTarget(playerName);
+    }
+
+    public void InitializePlayerData(string playerName)
+    {
+        string path = Application.persistentDataPath + "/" + PlayerFileName;
+        if (File.Exists(path))
+        {
+            Debug.Log("Payer data already exists");
+            LoadPlayerData();
+            Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay + " Level: " + PlayerDataObject.Level);
+        }
+        else
+        {
+            //Debug.Log("Payer data will be created");
+            PlayerDataObject = new Player(playerName);
+            SavePlayerData();
+            //Debug.Log("Player: " + PlayerDataObject.Name + " Phone: " + PlayerDataObject.PhoneColor + " Day: " + PlayerDataObject.CurrentDay);
+        }
     }
 
     public void LoadPlayerData()

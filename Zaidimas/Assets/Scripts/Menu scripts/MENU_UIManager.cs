@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class MENU_UIManager : MonoBehaviour
 {
-    [Header("Main window objects")]
-    public GameObject MainWindow;
+    //[Header("Main window objects")]
+    //public GameObject MainWindow;
 
     [Header("Level window objects")]
-    public GameObject LevelWindow;
+    public GameObject LevelStartWindow;
     [Space]
-    public Button PlayGameButton;
+    public Button LoadLevelButton;
     public Button DeleteProgressButton;
 
     [Header("Player choosing window objects")]
@@ -22,7 +22,10 @@ public class MENU_UIManager : MonoBehaviour
     public Button ButtonMolly;
     public Button ButtonRob;
     [Space]
-    public Button PlayGame;
+    public Button GoToLevelStartWindow;
+
+    [Header("About window objects")]
+    public GameObject AboutWindow;
 
     [Header("Audio sources")]
     public AudioSource MenuMusic;
@@ -31,9 +34,12 @@ public class MENU_UIManager : MonoBehaviour
 
     [Header("Managers")]
     public SettingSaving SettingsManager;
+    public PlayerDataSaving PlayerDataManager;
 
     [Header("Variables and other stuff")]
     public Texture2D[] CursorTextures;
+    [Space]
+    public string playerNameFromChoosingWindow;
 
     private static string PlayerFileName = "player.v1";
     private static string LevelDataFileName = "dayData.v1";
@@ -45,6 +51,9 @@ public class MENU_UIManager : MonoBehaviour
         SettingsManager.InitializeSettings();
         // set volume
         SetCursorSize();
+
+        playerNameFromChoosingWindow = "Alex";
+        // set button for alex
     }
 
     private void SetCursorSize()
@@ -61,36 +70,86 @@ public class MENU_UIManager : MonoBehaviour
                 Cursor.SetCursor(CursorTextures[2], Vector2.zero, CursorMode.Auto);
                 break;
         }
-
-        SettingsManager.SaveSettingsData();
     }
 
-    private void Update()
+    public void PlayButtonPress()
     {
+        string levelPath = Application.persistentDataPath + "/" + PlayerFileName;
 
+        if (!File.Exists(levelPath))
+        {
+            OpenPlayerChoosingWindow();
+        }
+        else
+        {
+            OpenLevelStartWindow();
+        }
     }
 
-    //--------------------------
-
-    public void OpenLevelWindow()
-    {
-        //ClickSound.Play();
-    }
+    //-----------------------------------
 
     public void OpenPlayerChoosingWindow()
     {
         //ClickSound.Play();
+        PlayerChoosingWindow.SetActive(true);
+    }
+    public void ClosePlayerChoosingWindow()
+    {
+        //ClickSound.Play();
+        PlayerChoosingWindow.SetActive(false);
     }
 
-    //--------------------------
+    public void SetPlayerData()
+    {
+        PlayerDataManager.InitializePlayerData(name);
+        ClosePlayerChoosingWindow();
+        OpenLevelStartWindow();
+    }
 
-    public void GoToGame()
+    public void SetPlayerName(string name)
+    {
+        if (playerNameFromChoosingWindow != name)
+        {
+            //ClickSound.Play();
+            playerNameFromChoosingWindow = name;
+        }
+    }
+
+    //-----------------------------------
+
+    public void OpenLevelStartWindow()
+    {
+        //ClickSound.Play();
+        LevelStartWindow.SetActive(true);
+    }
+    public void CloseLevelStartWindow()
+    {
+        //ClickSound.Play();
+        LevelStartWindow.SetActive(false);
+    }
+
+    public void LoadGameScene()
     {
 
+    }
+
+    //----------------------------------
+
+    public void OpenAboutWindow()
+    {
+        //ClickSound.Play();
+        AboutWindow.SetActive(true);
+    }
+    public void CloseAboutWindow()
+    {
+        //ClickSound.Play();
+        AboutWindow.SetActive(false);
     }
 
     public void DeleteProgress()
     {
+        //ClickSound.Play();
+
         DeleteProgressButton.enabled = false;
 
         string playerPath = Application.persistentDataPath + "/" + PlayerFileName;
@@ -101,6 +160,12 @@ public class MENU_UIManager : MonoBehaviour
         if (File.Exists(levelPath))
             File.Delete(levelPath);
 
-        Debug.Log("Progress deleted!(player: " + File.Exists(playerPath) + "; task: " + File.Exists(levelPath) + ")");
+        Debug.Log("Progress deleted!(player file exists: " + File.Exists(playerPath) + "; task file exists: " + File.Exists(levelPath) + ")");
+    }
+
+    public void QuitGame()
+    {
+        //ClickSound.Play();
+        Application.Quit();
     }
 }
