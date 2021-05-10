@@ -26,6 +26,9 @@ public class MENU_UIManager : MonoBehaviour
 
     [Header("About window objects")]
     public GameObject AboutWindow;
+    [Space]
+    public Vector3 AboutWindowHidenPos;
+    public Vector3 AboutWindowShownPos;
 
     [Header("Audio sources")]
     public AudioSource MenuMusic;
@@ -48,6 +51,8 @@ public class MENU_UIManager : MonoBehaviour
 
     private void Start()
     {
+        LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
+
         SettingsManager.InitializeSettings();
         // set volume
         SetCursorSize();
@@ -75,6 +80,8 @@ public class MENU_UIManager : MonoBehaviour
     public void PlayButtonPress()
     {
         string levelPath = Application.persistentDataPath + "/" + PlayerFileName;
+
+        CloseAboutWindow();
 
         if (!File.Exists(levelPath))
         {
@@ -111,6 +118,18 @@ public class MENU_UIManager : MonoBehaviour
         if (playerNameFromChoosingWindow != name)
         {
             //ClickSound.Play();
+            switch (name)
+            {
+                case "Alex":
+                    // pakeiciam su mygtuku kazka
+                    break;
+                case "Molly":
+                    // pakeiciam su mygtuku kazka
+                    break;
+                case "Rob":
+                    // pakeiciam su mygtuku kazka
+                    break;
+            }
             playerNameFromChoosingWindow = name;
         }
     }
@@ -138,12 +157,17 @@ public class MENU_UIManager : MonoBehaviour
     public void OpenAboutWindow()
     {
         //ClickSound.Play();
-        AboutWindow.SetActive(true);
+        //AboutWindow.SetActive(true);
+
+        LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
+        LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowShownPos, 0.4f);
     }
     public void CloseAboutWindow()
     {
         //ClickSound.Play();
-        AboutWindow.SetActive(false);
+
+        LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.4f);
+        //AboutWindow.SetActive(false);
     }
 
     public void DeleteProgress()
