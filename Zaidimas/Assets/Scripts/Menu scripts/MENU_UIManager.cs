@@ -43,6 +43,8 @@ public class MENU_UIManager : MonoBehaviour
     public Texture2D[] CursorTextures;
     [Space]
     public string playerNameFromChoosingWindow;
+    [Space]
+    public bool aboutWindowOpened;
 
     private static string PlayerFileName = "player.v1";
     private static string LevelDataFileName = "dayData.v1";
@@ -59,6 +61,8 @@ public class MENU_UIManager : MonoBehaviour
 
         playerNameFromChoosingWindow = "Alex";
         // set button for alex
+
+        aboutWindowOpened = false;
     }
 
     private void SetCursorSize()
@@ -81,7 +85,8 @@ public class MENU_UIManager : MonoBehaviour
     {
         string levelPath = Application.persistentDataPath + "/" + PlayerFileName;
 
-        CloseAboutWindow();
+        if (aboutWindowOpened)
+            CloseAboutWindow();
 
         if (!File.Exists(levelPath))
         {
@@ -156,18 +161,19 @@ public class MENU_UIManager : MonoBehaviour
 
     public void OpenAboutWindow()
     {
-        //ClickSound.Play();
-        //AboutWindow.SetActive(true);
-
-        LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
-        LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowShownPos, 0.4f);
+        if (!aboutWindowOpened)
+        {
+            //ClickSound.Play();
+            aboutWindowOpened = true;
+            LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
+            LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowShownPos, 0.4f);
+        }
     }
     public void CloseAboutWindow()
     {
         //ClickSound.Play();
-
+        aboutWindowOpened = false;
         LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.4f);
-        //AboutWindow.SetActive(false);
     }
 
     public void DeleteProgress()
