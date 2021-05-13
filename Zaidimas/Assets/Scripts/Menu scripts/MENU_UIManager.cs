@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MENU_UIManager : MonoBehaviour
 {
@@ -86,7 +87,11 @@ public class MENU_UIManager : MonoBehaviour
         string levelPath = Application.persistentDataPath + "/" + PlayerFileName;
 
         if (aboutWindowOpened)
-            CloseAboutWindow();
+        {
+            aboutWindowOpened = false;
+            LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
+        }
+            
 
         if (!File.Exists(levelPath))
         {
@@ -144,6 +149,17 @@ public class MENU_UIManager : MonoBehaviour
     public void OpenLevelStartWindow()
     {
         //ClickSound.Play();
+        string levelPath = Application.persistentDataPath + "/" + PlayerFileName;
+
+        if (File.Exists(levelPath))
+        {
+            DeleteProgressButton.enabled = true;
+        }
+        else
+        {
+            DeleteProgressButton.enabled = false;
+        }
+
         LevelStartWindow.SetActive(true);
     }
     public void CloseLevelStartWindow()
@@ -154,7 +170,8 @@ public class MENU_UIManager : MonoBehaviour
 
     public void LoadGameScene()
     {
-
+        //ClickSound.Play();
+        SceneManager.LoadScene("SampleScene");
     }
 
     //----------------------------------
