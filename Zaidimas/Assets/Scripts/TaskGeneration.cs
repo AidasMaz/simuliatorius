@@ -50,16 +50,18 @@ public class TaskGeneration : MonoBehaviour
         {
             number = num;
 
-            if (number % 3 == 0 || number % 2 == 0)
-            {
-                // Days: 2, 3, 4, 6, 8, 9, 10, 12, 14
-                DaysBigTasks.Add(new TaskObj<BigTasks>(BigTasks.Working));
-            }
-            else
-            {
-                // Days: 1, 5, 7, 11, 13
-                DaysBigTasks.Add(new TaskObj<BigTasks>(BigTasks.Shopping));
-            }
+            // Laikinai
+            DaysBigTasks.Add(new TaskObj<BigTasks>(BigTasks.Working));
+            //if (number % 3 == 0 || number % 2 == 0)
+            //{
+            //    // Days: 2, 3, 4, 6, 8, 9, 10, 12, 14
+            //    DaysBigTasks.Add(new TaskObj<BigTasks>(BigTasks.Working));
+            //}
+            //else
+            //{
+            //    // Days: 1, 5, 7, 11, 13
+            //    DaysBigTasks.Add(new TaskObj<BigTasks>(BigTasks.Shopping));
+            //}
         }
     }
 

@@ -335,7 +335,8 @@ public class PhoneUIManager : MonoBehaviour
                 MapNotificationCanNotTeleport.SetActive(true);
                 timerIDs.Add(TimerManager.StartTimer(NotificationShowingTime, false, delegate { MapNotificationCanNotTeleport.SetActive(false); canPressMapButtons = true; }));
             }
-            else if ((lvl == 1 && desiredTravelPlaceName == "Work") || (lvl < 3 && desiredTravelPlaceName == "Gym"))
+            //else if ((lvl == 1 && desiredTravelPlaceName == "Work") || (lvl < 3 && desiredTravelPlaceName == "Gym"))
+            else if ((lvl < 3 && (desiredTravelPlaceName == "Gym" || desiredTravelPlaceName == "Shop")))
             {
                 Debug.Log("Level too low to travel to: " + desiredTravelPlaceName);
                 MapNotificationNeedsHigherLevel.SetActive(true);
