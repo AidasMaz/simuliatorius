@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PhoneUIManager : MonoBehaviour
@@ -418,7 +419,7 @@ public class PhoneUIManager : MonoBehaviour
         PlayerInfo.SavePlayerData();
         GameDaysInfo.SaveLevelData();
 
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 
     private void OnDestroy()

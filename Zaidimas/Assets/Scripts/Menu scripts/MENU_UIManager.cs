@@ -171,7 +171,7 @@ public class MENU_UIManager : MonoBehaviour
     public void LoadGameScene()
     {
         //ClickSound.Play();
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1);
     }
 
     //----------------------------------
