@@ -89,7 +89,7 @@ public class MENU_UIManager : MonoBehaviour
         if (aboutWindowOpened)
         {
             aboutWindowOpened = false;
-            LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
+            CloseAboutWindow();
         }
             
 
