@@ -71,14 +71,36 @@ public class MENU_UIManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
 
+        PlayerDataManager.LoadDataOnly();
         SettingsManager.InitializeSettings();
         // set volume
         SetCursorSize();
 
-        playerNameFromChoosingWindow = "";
-        SetPlayerName("Alex");
+        string playerPath = Application.persistentDataPath + "/" + PlayerFileName;
+        if (!File.Exists(playerPath))
+        {
+            playerNameFromChoosingWindow = "";
+            SetPlayerName("Alex");
+        }
+        else
+        {
+            SetPlayerName(PlayerDataManager.PlayerDataObject.Name);
+            switch (playerNameFromChoosingWindow)
+            {
+                case "Alex":
+                    PlayerImage.sprite = SelectedPlayerSprites[0];
+                    break;
+                case "Molly":
+                    PlayerImage.sprite = SelectedPlayerSprites[1];
+                    break;
+                case "Rob":
+                    PlayerImage.sprite = SelectedPlayerSprites[2];
+                    break;
+            }
+        }
 
         aboutWindowOpened = false;
         justCreatedPlayer = false;
@@ -177,7 +199,7 @@ public class MENU_UIManager : MonoBehaviour
 
     public void SetPlayerData()
     {
-        PlayerDataManager.InitializePlayerData(name);
+        PlayerDataManager.InitializePlayerData(playerNameFromChoosingWindow);
         SqeezePlaneObj();
         timerIDs.Add(TimerManager.StartTimer(0.4f, false, delegate
         {
@@ -257,6 +279,7 @@ public class MENU_UIManager : MonoBehaviour
     public void LoadGameScene()
     {
         //ClickSound.Play();
+        PlayerPrefs.SetString("CHARACTER_NAME", playerNameFromChoosingWindow);
         SceneManager.LoadScene(1);
     }
 

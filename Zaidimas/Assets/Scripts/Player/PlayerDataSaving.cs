@@ -92,16 +92,54 @@ public class PlayerDataSaving : MonoBehaviour
         }
     }
 
-    public void LoadPlayerData()
+    public bool PlayerDataExists()
+    {
+        string path = Application.persistentDataPath + "/" + PlayerFileName;
+        return File.Exists(path);
+    }
+
+    public void LoadDataOnly()
     {
         string path = Application.persistentDataPath + "/" + PlayerFileName;
         if (File.Exists(path))
         {
-            //Debug.Log("Player data save file exists");
+            Debug.Log("Player data save file exists");
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             PlayerDataObject = formatter.Deserialize(stream) as Player;
             stream.Close();
+        }
+        else
+        {
+            Debug.LogWarning("Player data save file was not found");
+        }
+    }
+
+public void LoadPlayerData()
+    {
+        string path = Application.persistentDataPath + "/" + PlayerFileName;
+        if (File.Exists(path))
+        {
+            Debug.Log("Player data save file exists");
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            PlayerDataObject = formatter.Deserialize(stream) as Player;
+            stream.Close();
+
+            switch (PlayerDataObject.Name)
+            {
+                case "Alex":
+                    Instantiate(AlexPrefab, SpawningPoint, Quaternion.identity);
+                    break;
+                case "Molly":
+                    Instantiate(MollyPrefab, SpawningPoint, Quaternion.identity);
+                    break;
+                case "Rob":
+                    Instantiate(RobPrefab, SpawningPoint, Quaternion.identity);
+                    break;
+            }
+
+            CameraFollowing.SetTarget(PlayerDataObject.Name);
         }
         else
         {

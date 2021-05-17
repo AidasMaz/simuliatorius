@@ -72,16 +72,21 @@ public class PhoneUIManager : MonoBehaviour
     private void Start()
     {
         //isimti kai bus menu scena
-        if (DeleteLastInfo)
-        {
-            SettingsInfo.DeleteSettingsData();
-            PlayerInfo.DeletePlayerData();
-            GameDaysInfo.DeleteLevelData();
-        }
-        PlayerInfo.CreatePlayerData(PlayerInitiationName);
+        //if (DeleteLastInfo)
+        //{
+        //    SettingsInfo.DeleteSettingsData();
+        //    PlayerInfo.DeletePlayerData();
+        //    GameDaysInfo.DeleteLevelData();
+        //}
+        //PlayerInfo.CreatePlayerData(PlayerInitiationName);
         //isimti kai bus menu scena
 
-        PlayerInfo.LoadPlayerData();
+        //Debug.Log(PlayerPrefs.GetString("CHARACTER_NAME"));
+
+        if (PlayerInfo.PlayerDataExists())
+            PlayerInfo.LoadPlayerData();
+        //else
+        //    PlayerInfo.InitializePlayerData(PlayerPrefs.GetString("CHARACTER_NAME"));
         GameDaysInfo.InitializeDayData();
         SettingsInfo.InitializeSettings();
 
