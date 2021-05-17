@@ -16,6 +16,7 @@ public class PlayerDataSaving : MonoBehaviour
         public string PhoneColor;
         public string Place;
         public bool TutorialDone;
+        public int Score;
 
         public Player(string name)
         {
@@ -24,6 +25,7 @@ public class PlayerDataSaving : MonoBehaviour
             Name = name;
             Place = "Home";
             TutorialDone = false;
+            Score = 0;
 
             switch (name)
             {
