@@ -46,7 +46,8 @@ public class PlayerDataSaving : MonoBehaviour
     public GameObject MollyPrefab;
     public GameObject RobPrefab;
 
-    public Vector3 SpawningPoint;
+    public Vector3 HomePosition;
+    public Vector3 WorkPosition;
 
     public static string PlayerFileName = "player.v1";
 
@@ -59,6 +60,12 @@ public class PlayerDataSaving : MonoBehaviour
     public void CreatePlayerData(string playerName)
     {
         InitializePlayerData(playerName);
+
+        Vector3 SpawningPoint = new Vector3();
+        if (PlayerDataObject.Place == "Home")
+            SpawningPoint = HomePosition;
+        else if (PlayerDataObject.Place == "Work")
+            SpawningPoint = WorkPosition;
 
         switch (playerName)
         {
@@ -127,6 +134,12 @@ public class PlayerDataSaving : MonoBehaviour
             FileStream stream = new FileStream(path, FileMode.Open);
             PlayerDataObject = formatter.Deserialize(stream) as Player;
             stream.Close();
+
+            Vector3 SpawningPoint = new Vector3();
+            if (PlayerDataObject.Place == "Home")
+                SpawningPoint = HomePosition;
+            else if (PlayerDataObject.Place == "Work")
+                SpawningPoint = WorkPosition;
 
             switch (PlayerDataObject.Name)
             {

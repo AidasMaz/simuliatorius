@@ -29,6 +29,13 @@ public class cameraFollowing : MonoBehaviour
                 target = GameObject.Find("PLAYER_ROB(Clone)").transform;
                 break;
         }
+
+        InstantCameraMove();
+    }
+
+    public void InstantCameraMove()
+    {
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
     }
 
     private void FixedUpdate()

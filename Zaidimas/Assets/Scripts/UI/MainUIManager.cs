@@ -208,6 +208,8 @@ public class MainUIManager : MonoBehaviour
     {
         inTask = true;
         ShowMiniGameStartWindow(ButtonTask);
+
+        // pradeti skaiciuoti laika ir parodyti objektus
     }
 
     public void ShowMiniGameEndWindow(string game, bool goodEnd)
@@ -227,7 +229,12 @@ public class MainUIManager : MonoBehaviour
 
         MiniGameEndWindow.SetActive(true);
 
-        timerIDs.Add(TimerManager.StartTimer(waitTime, false, delegate { GetNextTask(); MiniGameEndWindow.SetActive(false); inTask = false; }));
+        timerIDs.Add(TimerManager.StartTimer(waitTime, false, delegate
+        {
+            GetNextTask();
+            MiniGameEndWindow.SetActive(false);
+            inTask = false;
+        }));
     }
 
     private void OnDestroy()

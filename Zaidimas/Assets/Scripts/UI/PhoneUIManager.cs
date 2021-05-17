@@ -63,6 +63,8 @@ public class PhoneUIManager : MonoBehaviour
     public TweeningPhone TweeningPhoneController;
     public cameraFollowing CameraFollowingController;
     public MainUIManager MainUIController;
+    [Space]
+    public GameObject PlayerObj;
 
     [Header("Player initiation variables")]
     public string PlayerInitiationName;
@@ -91,6 +93,19 @@ public class PhoneUIManager : MonoBehaviour
         GameDaysInfo.InitializeDayData();
         SettingsInfo.InitializeSettings();
         MainUIController.InitializeUI();
+
+        switch (PlayerInfo.PlayerDataObject.Name)
+        {
+            case "Alex":
+                PlayerObj = GameObject.Find("PLAYER_ALEX(Clone)");
+                break;
+            case "Molly":
+                PlayerObj = GameObject.Find("PLAYER_MOLLY(Clone)");
+                break;
+            case "Rob":
+                PlayerObj = GameObject.Find("PLAYER_ROB(Clone)");
+                break;
+        }
 
         SetTaskImages();
         UpdateCalendarNumberForCalendar();
@@ -353,9 +368,10 @@ public class PhoneUIManager : MonoBehaviour
             else
             {
                 Debug.Log("Can travel");
-                //PutAwayPhone();
+                PlayerInfo.PlayerDataObject.Place = desiredTravelPlaceName;
+                PutAwayPhone();
                 canPressMapButtons = true;
-                // ------------------------------------------------------------------++++++++++++++++++++
+                PlayerObj.GetComponent<PlayerMovement>().TeleportPlayer(desiredTravelPlaceName);
             }
         }
     }

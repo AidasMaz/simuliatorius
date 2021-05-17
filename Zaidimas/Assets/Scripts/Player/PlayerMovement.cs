@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;
 
+    public Vector3 HomePosition;
+    public Vector3 WorkPosition;
+
     [Header("Animators")]
     public Animator animator;
 
@@ -27,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public PhoneUIManager PhoneUIManager;
     public PlayerDataSaving PlayerDataManager;
     public MainUIManager MainUIManager;
+    public cameraFollowing CameraFollowManager;
 
     private string nameForPlayerAnimations;
 
@@ -44,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
         PlayerDataManager = GameObject.Find("PlayerSaving").GetComponent<PlayerDataSaving>();
         nameForPlayerAnimations = PlayerDataManager.PlayerDataObject.Name;
         MainUIManager = GameObject.Find("Main UI manager").GetComponent<MainUIManager>();
+        HomePosition = GameObject.Find("SpawnPoint_Home").GetComponent<Transform>().position;
+        WorkPosition = GameObject.Find("SpawnPoint_Work").GetComponent<Transform>().position;
+        CameraFollowManager = GameObject.Find("Main Camera").GetComponent<cameraFollowing>();
 
         State = PlayerStates.Walking;
 
@@ -180,6 +187,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void TeleportPlayer(string place)
+    {
+        switch (place)
+        {
+            case "Home":
+                transform.position = HomePosition;
+                animator.SetBool("Phone_TakeOut", false);
+                animator.SetBool("Phone_PutAway", true);
+                State = PlayerStates.Walking;
+                break;
+            case "Work":
+                transform.position = WorkPosition;
+                animator.SetBool("Phone_TakeOut", false);
+                animator.SetBool("Phone_PutAway", true);
+                State = PlayerStates.Walking;
+                break;
+        }
+        CameraFollowManager.InstantCameraMove();
+    }
 
     // gynimui
     //public void StartDoingDishes()
