@@ -15,6 +15,7 @@ public class PlayerDataSaving : MonoBehaviour
         public int Level;
         public string PhoneColor;
         public string Place;
+        public bool TutorialDone;
 
         public Player(string name)
         {
@@ -22,6 +23,7 @@ public class PlayerDataSaving : MonoBehaviour
             Level = 1;
             Name = name;
             Place = "Home";
+            TutorialDone = false;
 
             switch (name)
             {
@@ -56,7 +58,7 @@ public class PlayerDataSaving : MonoBehaviour
 
     public void CreatePlayerData(string playerName)
     {
-        InitializePlayerData(playerName);   
+        InitializePlayerData(playerName);
 
         switch (playerName)
         {
@@ -115,7 +117,7 @@ public class PlayerDataSaving : MonoBehaviour
         }
     }
 
-public void LoadPlayerData()
+    public void LoadPlayerData()
     {
         string path = Application.persistentDataPath + "/" + PlayerFileName;
         if (File.Exists(path))

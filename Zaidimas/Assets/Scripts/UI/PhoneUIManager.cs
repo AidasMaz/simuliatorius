@@ -62,6 +62,7 @@ public class PhoneUIManager : MonoBehaviour
     public PlayerDataSaving PlayerInfo;
     public TweeningPhone TweeningPhoneController;
     public cameraFollowing CameraFollowingController;
+    public MainUIManager MainUIController;
 
     [Header("Player initiation variables")]
     public string PlayerInitiationName;
@@ -89,6 +90,7 @@ public class PhoneUIManager : MonoBehaviour
         //    PlayerInfo.InitializePlayerData(PlayerPrefs.GetString("CHARACTER_NAME"));
         GameDaysInfo.InitializeDayData();
         SettingsInfo.InitializeSettings();
+        MainUIController.InitializeUI();
 
         SetTaskImages();
         UpdateCalendarNumberForCalendar();
