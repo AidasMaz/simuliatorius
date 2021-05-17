@@ -63,6 +63,7 @@ public class PhoneUIManager : MonoBehaviour
     public TweeningPhone TweeningPhoneController;
     public cameraFollowing CameraFollowingController;
     public MainUIManager MainUIController;
+    public AudioManager AudioManager;
     [Space]
     public GameObject PlayerObj;
 
@@ -106,6 +107,9 @@ public class PhoneUIManager : MonoBehaviour
                 PlayerObj = GameObject.Find("PLAYER_ROB(Clone)");
                 break;
         }
+
+        AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
+        AudioManager.ChangeMusic(PlayerInfo.PlayerDataObject.Place);
 
         SetTaskImages();
         UpdateCalendarNumberForCalendar();
@@ -372,6 +376,7 @@ public class PhoneUIManager : MonoBehaviour
                 PutAwayPhone();
                 canPressMapButtons = true;
                 PlayerObj.GetComponent<PlayerMovement>().TeleportPlayer(desiredTravelPlaceName);
+                AudioManager.ChangeMusic(desiredTravelPlaceName);
             }
         }
     }
@@ -441,7 +446,7 @@ public class PhoneUIManager : MonoBehaviour
     {
         PlayerInfo.SavePlayerData();
         GameDaysInfo.SaveLevelData();
-
+        AudioManager.ChangeMusic("Menu");
         SceneManager.LoadScene(0);
     }
 
