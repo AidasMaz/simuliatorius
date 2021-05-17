@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PhoneUIManager PhoneUIManager;
     public PlayerDataSaving PlayerDataManager;
+    public MainUIManager MainUIManager;
 
     private string nameForPlayerAnimations;
 
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         PhoneUIManager = GameObject.Find("Phone UI manager").GetComponent<PhoneUIManager>();
         PlayerDataManager = GameObject.Find("PlayerSaving").GetComponent<PlayerDataSaving>();
         nameForPlayerAnimations = PlayerDataManager.PlayerDataObject.Name;
+        MainUIManager = GameObject.Find("Main UI manager").GetComponent<MainUIManager>();
 
         State = PlayerStates.Walking;
 
@@ -72,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && State != PlayerStates.Chef &&
+        if (Input.GetKeyDown(KeyCode.Escape) && State != PlayerStates.Chef && !MainUIManager.inTask &&
             animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_TakeOut" &&
             animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_PutAway")
         {

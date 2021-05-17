@@ -41,6 +41,7 @@ public class MainUIManager : MonoBehaviour
     [Header("Variables")]
     public ButtonVariants ButtonTask;
     public bool tutorialDone;
+    public bool inTask;
     public float waitTime = 1f;
 
     private List<uint> timerIDs = new List<uint>();
@@ -51,13 +52,15 @@ public class MainUIManager : MonoBehaviour
         Ducks,
         Trashes,
         Dishes,
-        TP
+        TP,
+        Working
     }
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     public void InitializeUI()
     {
+        inTask = false;
         tutorialDone = PlayerInfo.PlayerDataObject.TutorialDone;
 
         if (!tutorialDone)
@@ -77,7 +80,74 @@ public class MainUIManager : MonoBehaviour
                 break;
         }
 
-        //timerIDs.Add(TimerManager.StartTimer(waitTime, false, delegate { }));
+        GetNextTask();
+    }
+
+    public void GetNextTask()
+    {
+        TaskGeneration.Day day = DayTaskManager.GameDataObject.DayList[PlayerInfo.PlayerDataObject.CurrentDay - 1];
+        foreach (var mainTask in day.DaysBigTasks)
+        {
+            if (mainTask.Status == TaskGeneration.TaskStatus.New)
+            {
+                switch (mainTask.Task)
+                {
+                    case TaskGeneration.BigTasks.Working:
+                        ButtonTask = ButtonVariants.Working;
+                        return;
+                }
+            }
+        }
+        foreach (var smallTask in day.DaysHomeTasks)
+        {
+            if (smallTask.Status == TaskGeneration.TaskStatus.New)
+            {
+                switch (smallTask.Task)
+                {
+                    case TaskGeneration.HomeTasks.Dishes:
+                        ButtonTask = ButtonVariants.Dishes;
+                        return;
+                    case TaskGeneration.HomeTasks.Ducks:
+                        ButtonTask = ButtonVariants.Ducks;
+                        return;
+                    case TaskGeneration.HomeTasks.Trashes:
+                        ButtonTask = ButtonVariants.Trashes;
+                        return;
+                    case TaskGeneration.HomeTasks.ToiletPapper:
+                        ButtonTask = ButtonVariants.TP;
+                        return;
+                }
+            }
+        }
+        ButtonTask = ButtonVariants.Sleep;
+    }
+
+    public void MarkOffCurrentTask(bool succeeded)
+    {
+        TaskGeneration.Day day = DayTaskManager.GameDataObject.DayList[PlayerInfo.PlayerDataObject.CurrentDay - 1];
+
+        TaskGeneration.TaskStatus asignableStatus;
+        if (succeeded)
+            asignableStatus = TaskGeneration.TaskStatus.Done;
+        else
+            asignableStatus = TaskGeneration.TaskStatus.Failed;
+
+        foreach (var mainTask in day.DaysBigTasks)
+        {
+            if (mainTask.Status == TaskGeneration.TaskStatus.New)
+            {
+                mainTask.Status = asignableStatus;
+                return;
+            }
+        }
+        foreach (var smallTask in day.DaysHomeTasks)
+        {
+            if (smallTask.Status == TaskGeneration.TaskStatus.New)
+            {
+                smallTask.Status = asignableStatus;
+                return;
+            }
+        }
     }
 
     private void Update()
@@ -136,14 +206,28 @@ public class MainUIManager : MonoBehaviour
 
     public void StartMiniGame()
     {
+        inTask = true;
         ShowMiniGameStartWindow(ButtonTask);
     }
 
     public void ShowMiniGameEndWindow(string game, bool goodEnd)
     {
+        bool goodend = true;
+
+        if (goodend)
+        {
+            MiniGameEndText.text = "Task done successesfuly!";
+            MarkOffCurrentTask(true);
+        }
+        else
+        {
+            MiniGameEndText.text = "Task was failed...";
+            MarkOffCurrentTask(false);
+        }
 
         MiniGameEndWindow.SetActive(true);
-        // parodyti gera arba bloga pabaiga
+
+        timerIDs.Add(TimerManager.StartTimer(waitTime, false, delegate { GetNextTask(); MiniGameEndWindow.SetActive(false); inTask = false; }));
     }
 
     private void OnDestroy()
