@@ -198,17 +198,15 @@ public class PlayerMovement : MonoBehaviour
         {
             case "Home":
                 transform.position = HomePosition;
-                animator.SetBool("Phone_TakeOut", false);
-                animator.SetBool("Phone_PutAway", true);
-                State = PlayerStates.Walking;
                 break;
             case "Work":
                 transform.position = WorkPosition;
-                animator.SetBool("Phone_TakeOut", false);
-                animator.SetBool("Phone_PutAway", true);
-                State = PlayerStates.Walking;
                 break;
         }
+
+        animator.SetBool("Phone_TakeOut", false);
+        animator.SetBool("Phone_PutAway", true);
+        State = PlayerStates.Walking;
         CameraFollowManager.InstantCameraMove();
     }
 
