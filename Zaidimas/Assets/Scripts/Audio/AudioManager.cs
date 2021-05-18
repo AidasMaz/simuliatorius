@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
     public void InstantiateAudioVolume()
     {
         ChangeMusicVolume(SettingsManager.SettingsObject.MusicVolume);
-        //ChangeSoundVolume(SettingsManager.SettingsObject.SoundVolume);
+        ChangeSoundVolume(SettingsManager.SettingsObject.SoundVolume);
     }
 
     //---------------------------------------------
@@ -112,7 +112,7 @@ public class AudioManager : MonoBehaviour
         {
             if (track.name == name)
             {
-                track.source.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                track.source.pitch = UnityEngine.Random.Range(0.83f, 1.17f);
                 track.source.Play();
                 return;
             }

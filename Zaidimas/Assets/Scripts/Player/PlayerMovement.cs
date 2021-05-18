@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerDataSaving PlayerDataManager;
     public MainUIManager MainUIManager;
     public cameraFollowing CameraFollowManager;
+    public AudioManager AudioManager;
 
     private string nameForPlayerAnimations;
 
@@ -51,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         HomePosition = GameObject.Find("SpawnPoint_Home").GetComponent<Transform>().position;
         WorkPosition = GameObject.Find("SpawnPoint_Work").GetComponent<Transform>().position;
         CameraFollowManager = GameObject.Find("Main Camera").GetComponent<cameraFollowing>();
+        AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
 
         State = PlayerStates.Walking;
 
@@ -90,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
             switch (State)
             {
                 case PlayerStates.Walking:
+                    AudioManager.PlaySound("Phone out");
                     PhoneUIManager.TakeOutPhone();
                     movement = new Vector2(0, 0);
                     animator.SetFloat("Horizontal", 0);
@@ -103,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
                     State = PlayerStates.Mobile;
                     break;
                 case PlayerStates.Mobile:
+                    AudioManager.PlaySound("Phone in");
                     PhoneUIManager.PutAwayPhone();
                     animator.SetBool("Phone_TakeOut", false);
                     animator.SetBool("Phone_PutAway", true);
@@ -126,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetBool("Chef_Mode", false);
                     break;
             }
+            AudioManager.PlaySound("Change clothes");
         }
         else
         {
