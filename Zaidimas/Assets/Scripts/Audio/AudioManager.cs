@@ -19,8 +19,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Managers")]
     public SettingSaving SettingsManager;
-
-
+    [Space]
     public static AudioManager instance;
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -102,6 +101,21 @@ public class AudioManager : MonoBehaviour
         foreach (var track in SoundList)
         {
             track.source.volume = value;
+        }
+    }
+
+    //--------------------------------------------
+
+    public void PlaySound(string name)
+    {
+        foreach (var track in SoundList)
+        {
+            if (track.name == name)
+            {
+                track.source.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                track.source.Play();
+                return;
+            }
         }
     }
 }

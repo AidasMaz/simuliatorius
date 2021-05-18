@@ -50,6 +50,7 @@ public class MENU_UIManager : MonoBehaviour
     [Header("Managers")]
     public SettingSaving SettingsManager;
     public PlayerDataSaving PlayerDataManager;
+    public AudioManager AudioManager;
 
     [Header("Variables and other stuff")]
     public Texture2D[] CursorTextures;
@@ -76,8 +77,9 @@ public class MENU_UIManager : MonoBehaviour
 
         PlayerDataManager.LoadDataOnly();
         SettingsManager.InitializeSettings();
-        // set volume
         SetCursorSize();
+
+        AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
 
         string playerPath = Application.persistentDataPath + "/" + PlayerFileName;
         if (!File.Exists(playerPath))
@@ -146,13 +148,15 @@ public class MENU_UIManager : MonoBehaviour
         }
 
         OpenCraneWindow();
+
+        //AudioManager.PlaySound("Click");
     }
 
     public void OpenCraneWindow()
     {
         if (!craneWindowOpened)
         {
-            //ClickSound.Play();
+            //AudioManager.PlaySound("Click");
             craneWindowOpened = true;
             AboutButton.interactable = false;
             StartButton.interactable = false;
@@ -162,7 +166,7 @@ public class MENU_UIManager : MonoBehaviour
     }
     public void CloseCraneWindow()
     {
-        //ClickSound.Play();
+        //AudioManager.PlaySound("Click");
         craneWindowOpened = false;
         AboutButton.interactable = true;
         StartButton.interactable = true;
@@ -185,15 +189,14 @@ public class MENU_UIManager : MonoBehaviour
 
     public void OpenPlayerChoosingWindow()
     {
-        //ClickSound.Play();
         //SetPlayerData();
-        
+
         justCreatedPlayer = true;
         PlayerChoosingWindow.SetActive(true);
     }
     public void ClosePlayerChoosingWindow()
     {
-        //ClickSound.Play();
+        //AudioManager.PlaySound("Click");
         PlayerChoosingWindow.SetActive(false);
     }
 
@@ -213,7 +216,7 @@ public class MENU_UIManager : MonoBehaviour
     {
         if (playerNameFromChoosingWindow != name)
         {
-            //ClickSound.Play();
+            //AudioManager.PlaySound("Click");
             switch (name)
             {
                 case "Alex":
@@ -240,7 +243,7 @@ public class MENU_UIManager : MonoBehaviour
 
     public void OpenLevelStartWindow()
     {
-        //ClickSound.Play();
+        //AudioManager.PlaySound("Click");
 
         switch (playerNameFromChoosingWindow)
         {
@@ -259,7 +262,7 @@ public class MENU_UIManager : MonoBehaviour
     }
     public void CloseLevelStartWindow()
     {
-        //ClickSound.Play();
+        //AudioManager.PlaySound("Click");
         if (justCreatedPlayer)
         {
             SqeezePlaneObj();
@@ -278,14 +281,14 @@ public class MENU_UIManager : MonoBehaviour
 
     public void LoadGameScene()
     {
-        //ClickSound.Play();
+        //AudioManager.PlaySound("Click");
         PlayerPrefs.SetString("CHARACTER_NAME", playerNameFromChoosingWindow);
         SceneManager.LoadScene(1);
     }
 
     public void DeleteProgress()
     {
-        //ClickSound.Play();
+        AudioManager.PlaySound("Click");
 
         //DeleteProgressButton.enabled = false;
 
@@ -319,7 +322,8 @@ public class MENU_UIManager : MonoBehaviour
     {
         if (!aboutWindowOpened)
         {
-            //ClickSound.Play();
+            AudioManager.PlaySound("Click");
+            AudioManager.PlaySound("About open");
             aboutWindowOpened = true;
             AboutButton.interactable = false;
             StartButton.interactable = false;
@@ -329,7 +333,8 @@ public class MENU_UIManager : MonoBehaviour
     }
     public void CloseAboutWindow()
     {
-        //ClickSound.Play();
+        AudioManager.PlaySound("Click");
+        AudioManager.PlaySound("About close");
         aboutWindowOpened = false;
         AboutButton.interactable = true;
         StartButton.interactable = true;
@@ -338,8 +343,13 @@ public class MENU_UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        //ClickSound.Play();
+        AudioManager.PlaySound("Click");
         Application.Quit();
+    }
+
+    public void PlayClick()
+    {
+        AudioManager.PlaySound("Click");
     }
 
     private void OnDestroy()
