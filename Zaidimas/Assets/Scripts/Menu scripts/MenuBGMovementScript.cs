@@ -23,10 +23,13 @@ public class MenuBGMovementScript : MonoBehaviour
 
     private void Awake()
     {
+        //Debug.Log(Screen.width);
         ScreenCenter = Screen.width / 2;
         ScreenWidth = Screen.width;
         posBG = ScreenCenter - (PixelsToMoveOneSide / (float)ScreenCenter * Input.mousePosition.x);
+        Debug.Log(posBG);
         Background.transform.position = new Vector2(posBG, Background.transform.position.y);
+        Debug.Log(new Vector2(posBG, Background.transform.position.y));
     }
 
     private void Update()
@@ -43,11 +46,13 @@ public class MenuBGMovementScript : MonoBehaviour
         if (Input.mousePosition.x > 0 && Input.mousePosition.x < ScreenWidth)
         {
             //Debug.Log("Cursor is right");
+            //Debug.Log(Input.mousePosition.x);
             posBG = ScreenWidth * 0.01f + ScreenCenter - (PixelsToMoveOneSide /  (float)ScreenCenter * Input.mousePosition.x);
         }
         //Debug.Log(pos);
         //Background.transform.position = new Vector2(pos, Background.transform.position.y);
         desiredPosition = new Vector2(posBG, Background.transform.position.y);
+        //Debug.Log(desiredPosition);
         Vector2 smoothedPosition = Vector2.Lerp(new Vector2(Background.transform.position.x, Background.transform.position.y), desiredPosition, smoothSpeed * Time.deltaTime);
         Background.transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, Background.transform.position.z);
     }
