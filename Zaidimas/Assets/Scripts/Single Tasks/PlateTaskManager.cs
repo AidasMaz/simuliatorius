@@ -30,7 +30,7 @@ public class PlateTaskManager : MonoBehaviour
 
         for (int i = 0; i < activatedPlateCount; i++)
         {
-            Plates[i].SetActive(true);
+            Plates[i].GetComponent<ItemColorPulsing>().SetUpItem();
         }
     }
 

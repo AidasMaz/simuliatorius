@@ -15,6 +15,8 @@ public class TrashTaskManager : MonoBehaviour
 
     public void SetTrashCleaningLevel(int day)
     {
+        Debug.Log("5. trash task manager");
+
         ShuffleArray();
 
         if (day < 3)
@@ -27,10 +29,12 @@ public class TrashTaskManager : MonoBehaviour
             activatedTrashCount = 8;
 
         trashLeftCount = activatedTrashCount;
-
+        Debug.Log("6. cikliukas");
         for (int i = 0; i < activatedTrashCount; i++)
         {
-            Trashes[i].SetActive(true);
+            Debug.Log("7. viduj ciklo");
+            //Trashes[i].SetActive(true);
+            Trashes[i].GetComponent<ItemColorPulsing>().SetUpItem();
         }
     }
 

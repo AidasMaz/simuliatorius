@@ -4096,6 +4096,14 @@ MonoBehaviour:
     source: {fileID: 2126478450}
   - name: Change clothes
     source: {fileID: 397292485}
+  - name: Duck
+    source: {fileID: 144050317}
+  - name: TP
+    source: {fileID: 2077666400}
+  - name: Dish
+    source: {fileID: 657809932}
+  - name: Trash
+    source: {fileID: 799959535}
   SettingsManager: {fileID: 2089633244}
 --- !u!4 &1504349847
 Transform:

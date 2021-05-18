@@ -130,6 +130,9 @@ public class PhoneUIManager : MonoBehaviour
     {
         TweeningPhoneController.QuickMoveFromRight();
         CameraFollowingController.ofset = true;
+        SetTaskImages();
+        UpdateCalendarNumberForMain();
+        UpdateCalendarNumberForCalendar();
         Phone.SetActive(true);
         //TurnOnSound.Play();
     }
@@ -212,8 +215,8 @@ public class PhoneUIManager : MonoBehaviour
         // cleaning
         for (int i = 0; i < 3; i++)
         {
-            TaskDoneImages[i].enabled = false;
-            TaskFailedImages[i].enabled = false;
+            TaskDoneImages[i].gameObject.SetActive(false);
+            TaskFailedImages[i].gameObject.SetActive(false);
         }
 
         // showing
@@ -227,13 +230,16 @@ public class PhoneUIManager : MonoBehaviour
                 else if (day.DaysBigTasks.First().Task == TaskGeneration.BigTasks.Working)
                     BigTaskImage.sprite = Resources.LoadAll<Sprite>("UI/Calendar objects/Tasks")[5];
 
+                Debug.Log(day.DaysBigTasks.Count);
+                Debug.Log(day.DaysBigTasks.First().Task);
+                Debug.Log(day.DaysBigTasks.First().Status);
                 switch (day.DaysBigTasks.First().Status)
                 {
                     case TaskGeneration.TaskStatus.Done:
-                        TaskDoneImages[0].enabled = true;
+                        TaskDoneImages[0].gameObject.SetActive(true);
                         break;
                     case TaskGeneration.TaskStatus.Failed:
-                        TaskFailedImages[0].enabled = true;
+                        TaskFailedImages[0].gameObject.SetActive(true);
                         break;
                 }
 
@@ -257,13 +263,13 @@ public class PhoneUIManager : MonoBehaviour
                 switch (day.DaysHomeTasks.First().Status)
                 {
                     case TaskGeneration.TaskStatus.Done:
-                        TaskDoneImages[1].enabled = true;
+                        TaskDoneImages[1].gameObject.SetActive(true);
                         break;
                     case TaskGeneration.TaskStatus.Failed:
-                        TaskFailedImages[1].enabled = true;
+                        TaskFailedImages[1].gameObject.SetActive(true);
                         break;
                 }
-
+                 
                 if (day.DaysHomeTasks.Count > 1)
                 {
                     switch (day.DaysHomeTasks.ElementAt(1).Task)
@@ -285,13 +291,14 @@ public class PhoneUIManager : MonoBehaviour
                     switch (day.DaysHomeTasks.First().Status)
                     {
                         case TaskGeneration.TaskStatus.Done:
-                            TaskDoneImages[2].enabled = true;
+                            TaskDoneImages[2].gameObject.SetActive(true);
                             break;
                         case TaskGeneration.TaskStatus.Failed:
-                            TaskFailedImages[2].enabled = true;
+                            TaskFailedImages[2].gameObject.SetActive(true);
                             break;
                     }
                 }
+                break;
             }
         }
 

@@ -28,21 +28,36 @@ public class MainUIManager : MonoBehaviour
     public Sprite[] PlayerSprites;
     [Space]
     public Button TaskStartButton;
+    [Space]
+    public GameObject ThoughBubble;
+    [Space]
+    public Image SearchableItem;
+    public Sprite[] Items;
 
-    [Header("Sounds")]
-    public AudioSource LevelUpSound;
-    public AudioSource ClickSound;
+    //[Header("Sounds")]
+    //public AudioSource LevelUpSound;
+    //public AudioSource ClickSound;
+
+    public Image Black;
 
     [Header("Managers and controllers")]
     public PlayerDataSaving PlayerInfo;
     public TaskGeneration DayTaskManager;
-    // minigame manager
+    [Space]
+    public TrashTaskManager TaskTrashManager;
+    public ToiletPapperTaskManager TaskTPManager;
+    public PlateTaskManager TaskPlateManager;
+    public DuckTaskManager TaskDuckManager;
+
+    public AudioManager AudioMan;
 
     [Header("Variables")]
     public ButtonVariants ButtonTask;
     public bool tutorialDone;
     public bool inTask;
     public float waitTime = 1f;
+    [Space]
+    public int ItemsLeft;
 
     private List<uint> timerIDs = new List<uint>();
 
@@ -60,6 +75,7 @@ public class MainUIManager : MonoBehaviour
 
     public void InitializeUI()
     {
+        AudioMan = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
         inTask = false;
         tutorialDone = PlayerInfo.PlayerDataObject.TutorialDone;
 
@@ -81,6 +97,13 @@ public class MainUIManager : MonoBehaviour
         }
 
         GetNextTask();
+
+        timerIDs.Add(TimerManager.StartTimer(2f, false, delegate { TaskStartButton.gameObject.SetActive(true); }));
+    }
+
+    public void PlayClick()
+    {
+        AudioMan.PlaySound("Click");
     }
 
     public void GetNextTask()
@@ -122,8 +145,24 @@ public class MainUIManager : MonoBehaviour
         ButtonTask = ButtonVariants.Sleep;
     }
 
+    public void GetNextDay()
+    {
+        //Black.gameObject.SetActive(true);
+        //LeanTween.color(Black.gameObject, new Color32(255, 255, 255, 255), 0.3f);
+        //timerIDs.Add(TimerManager.StartTimer(1f, false, delegate {
+        //    LeanTween.color(Black.gameObject, new Color32(255, 255, 255, 0), 0.3f); Black.gameObject.SetActive(true);
+        //}));
+        inTask = false;
+        ThoughBubble.SetActive(false);
+        PlayerInfo.PlayerDataObject.CurrentDay += 1;
+        GetNextTask();
+        DayTaskManager.GameDataObject.PrintOutDayList();
+        timerIDs.Add(TimerManager.StartTimer(2f, false, delegate { TaskStartButton.gameObject.SetActive(true); }));
+    }
+
     public void MarkOffCurrentTask(bool succeeded)
     {
+        PlayerInfo.PlayerDataObject.Score += 100;
         TaskGeneration.Day day = DayTaskManager.GameDataObject.DayList[PlayerInfo.PlayerDataObject.CurrentDay - 1];
 
         TaskGeneration.TaskStatus asignableStatus;
@@ -137,6 +176,7 @@ public class MainUIManager : MonoBehaviour
             if (mainTask.Status == TaskGeneration.TaskStatus.New)
             {
                 mainTask.Status = asignableStatus;
+                Debug.Log("assigned main");
                 return;
             }
         }
@@ -145,6 +185,7 @@ public class MainUIManager : MonoBehaviour
             if (smallTask.Status == TaskGeneration.TaskStatus.New)
             {
                 smallTask.Status = asignableStatus;
+                Debug.Log("assigned small");
                 return;
             }
         }
@@ -159,6 +200,12 @@ public class MainUIManager : MonoBehaviour
                 PlayerInfo.PlayerDataObject.TutorialDone = true;
                 CloseTutorial();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Restoranas padarytas");
+            ShowMiniGameEndWindow("Work", true);
         }
     }
 
@@ -184,39 +231,102 @@ public class MainUIManager : MonoBehaviour
 
     public void ShowMiniGameStartWindow(ButtonVariants game)
     {
+        Debug.Log("2. show mini window");
         //MiniGameStartWindowSprite = Resources.Load<Sprite>("" + game);
+        Debug.Log("3. game: " + game.ToString());
         switch (game)
         {
             case ButtonVariants.Ducks:
                 MiniGameText.text = "Find the duck!";
+                TaskDuckManager.SetDuckFindingLevel();
+                ItemsLeft = 1;
                 break;
             case ButtonVariants.Trashes:
                 MiniGameText.text = "Clean the trashes!";
+                Debug.Log("4. switch");
+                TaskTrashManager.SetTrashCleaningLevel(PlayerInfo.PlayerDataObject.CurrentDay);
+                ItemsLeft = TaskTrashManager.trashLeftCount;
                 break;
             case ButtonVariants.Dishes:
                 MiniGameText.text = "Clean the dishes!";
+                TaskPlateManager.SetPlateCleaningLevel(PlayerInfo.PlayerDataObject.CurrentDay);
+                ItemsLeft = TaskPlateManager.platesLeftCount;
                 break;
             case ButtonVariants.TP:
                 MiniGameText.text = "Find the toilet papper!";
+                TaskTPManager.SetTPFindingLevel();
+                ItemsLeft = 1;
+                break;
+            case ButtonVariants.Working:
+                MiniGameText.text = "Time to work!";
+                //TaskTPManager.SetTPFindingLevel();
+                //ItemsLeft = 1;
                 break;
         }
 
-        MiniGameStartWindow.SetActive(true);
+        if (game != ButtonVariants.Sleep)
+        {
+            MiniGameStartWindow.SetActive(true);
+        }
+
+        timerIDs.Add(TimerManager.StartTimer(2f, false, delegate
+        {
+            MiniGameStartWindow.SetActive(false);
+            switch (ButtonTask)
+            {
+                case ButtonVariants.Sleep:
+                    SearchableItem.sprite = Items[0];
+                    break;
+                case ButtonVariants.Ducks:
+                    SearchableItem.sprite = Items[1];
+                    break;
+                case ButtonVariants.Trashes:
+                    SearchableItem.sprite = Items[2];
+                    break;
+                case ButtonVariants.Dishes:
+                    SearchableItem.sprite = Items[3];
+                    break;
+                case ButtonVariants.TP:
+                    SearchableItem.sprite = Items[4];
+                    break;
+                case ButtonVariants.Working:
+                    SearchableItem.sprite = Items[5];
+                    break;
+            }
+            ThoughBubble.SetActive(true);
+        }));
     }
 
     public void StartMiniGame()
     {
+        Debug.Log("1. mygtukas");
         inTask = true;
+        TaskStartButton.gameObject.SetActive(false);
         ShowMiniGameStartWindow(ButtonTask);
 
+        switch (ButtonTask)
+        {
+            case ButtonVariants.Sleep:
+                break;
+            case ButtonVariants.Ducks:
+                break;
+            case ButtonVariants.Trashes:
+                break;
+            case ButtonVariants.Dishes:
+                break;
+            case ButtonVariants.TP:
+                break;
+            case ButtonVariants.Working:
+                break;
+        }
         // pradeti skaiciuoti laika ir parodyti objektus
     }
 
     public void ShowMiniGameEndWindow(string game, bool goodEnd)
     {
-        bool goodend = true;
+        //bool goodend = true;
 
-        if (goodend)
+        if (goodEnd)
         {
             MiniGameEndText.text = "Task done successesfuly!";
             MarkOffCurrentTask(true);
@@ -226,12 +336,14 @@ public class MainUIManager : MonoBehaviour
             MiniGameEndText.text = "Task was failed...";
             MarkOffCurrentTask(false);
         }
-
+        DayTaskManager.GameDataObject.PrintOutDayList();
+        ThoughBubble.SetActive(false);
         MiniGameEndWindow.SetActive(true);
 
         timerIDs.Add(TimerManager.StartTimer(waitTime, false, delegate
         {
             GetNextTask();
+            timerIDs.Add(TimerManager.StartTimer(2f, false, delegate { TaskStartButton.gameObject.SetActive(true); }));
             MiniGameEndWindow.SetActive(false);
             inTask = false;
         }));

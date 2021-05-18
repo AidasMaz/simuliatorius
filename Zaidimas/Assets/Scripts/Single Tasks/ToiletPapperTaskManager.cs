@@ -9,6 +9,8 @@ public class ToiletPapperTaskManager : MonoBehaviour
     [Space]
     public GameObject OriginalTP;
 
+    public bool CollecetedPaper;
+
     private int number;
 
     //++++++++++++++++++++++++++++++++++++++++++++++++

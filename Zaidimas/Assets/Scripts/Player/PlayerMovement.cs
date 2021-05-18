@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     public cameraFollowing CameraFollowManager;
     public AudioManager AudioManager;
 
+    private List<uint> timerIDs = new List<uint>();
+    public GameObject Black;
+
     private string nameForPlayerAnimations;
 
     // gynimui nenaudoti
@@ -53,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         WorkPosition = GameObject.Find("SpawnPoint_Work").GetComponent<Transform>().position;
         CameraFollowManager = GameObject.Find("Main Camera").GetComponent<cameraFollowing>();
         AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
+        Black = GameObject.Find("Image Black");
 
         State = PlayerStates.Walking;
 
@@ -194,6 +199,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void TeleportPlayer(string place)
     {
+        //Black.gameObject.SetActive(true);
+        //LeanTween.color(Black.gameObject, new Color32(255, 255, 255, 255), 0.3f);
+        //timerIDs.Add(TimerManager.StartTimer(1f, false, delegate {
+        //    LeanTween.color(Black.gameObject, new Color32(255, 255, 255, 0), 0.3f); Black.gameObject.SetActive(true);
+        //}));
         switch (place)
         {
             case "Home":
@@ -208,6 +218,17 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Phone_PutAway", true);
         State = PlayerStates.Walking;
         CameraFollowManager.InstantCameraMove();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (uint id in timerIDs)
+        {
+            if (TimerManager.TimeRemaining(id) > 0)
+            {
+                TimerManager.CancelTimer(id);
+            }
+        }
     }
 
     // gynimui
