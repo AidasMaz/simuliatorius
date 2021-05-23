@@ -80,6 +80,7 @@ public class MENU_UIManager : MonoBehaviour
         SetCursorSize();
 
         AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
+        AudioManager.InstantiateAudioVolume();
 
         string playerPath = Application.persistentDataPath + "/" + PlayerFileName;
         if (!File.Exists(playerPath))
@@ -156,7 +157,7 @@ public class MENU_UIManager : MonoBehaviour
     {
         if (!craneWindowOpened)
         {
-            //AudioManager.PlaySound("Click");
+            AudioManager.PlaySound("About open");
             craneWindowOpened = true;
             AboutButton.interactable = false;
             StartButton.interactable = false;
@@ -166,7 +167,7 @@ public class MENU_UIManager : MonoBehaviour
     }
     public void CloseCraneWindow()
     {
-        //AudioManager.PlaySound("Click");
+        AudioManager.PlaySound("About close");
         craneWindowOpened = false;
         AboutButton.interactable = true;
         StartButton.interactable = true;
@@ -176,6 +177,7 @@ public class MENU_UIManager : MonoBehaviour
 
     public void SqeezePlaneObj()
     {
+        AudioManager.PlaySound("About open");
         Vector3 final = new Vector3(0, normal.y, normal.z);
         LeanTween.scale(BackgroundPanel.gameObject, final, 0.4f);
     }
