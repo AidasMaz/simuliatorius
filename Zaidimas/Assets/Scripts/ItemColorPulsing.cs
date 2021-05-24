@@ -115,9 +115,9 @@ public class ItemColorPulsing : MonoBehaviour
             }
             switch (pieceType)
             {
-                //case ColorType.TPs:
-                //    TPManager = GameObject.Find("Toilet papper finding manager").GetComponent<ToiletPapperTaskManager>();
-                //    break;
+                case ColorType.TPs:
+                    TPManager.CollecetedPaper = true;
+                    break;
                 case ColorType.Plates:
                     if (PlateManager.platesLeftCount > 1)
                         PlateManager.platesLeftCount = PlateManager.platesLeftCount - 1;

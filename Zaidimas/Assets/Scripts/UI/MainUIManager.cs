@@ -204,6 +204,13 @@ public class MainUIManager : MonoBehaviour
             Debug.Log("Restoranas padarytas");
             ShowMiniGameEndWindow("Work", true);
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log("Level up!");
+            PlayerInfo.PlayerDataObject.Level += 1;
+            ShowLevelUpWindow();
+        }
     }
 
     public void ShowTutorial()
@@ -224,7 +231,7 @@ public class MainUIManager : MonoBehaviour
         LevelUpWindowImage.sprite = LevelUpSprites[lvl - 1];
         LevelUpWindow.SetActive(true);
         //LevelUpSound.Play();
-        timerIDs.Add(TimerManager.StartTimer(2.4f, false, delegate { LevelUpWindow.SetActive(false); }));
+        timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate { LevelUpWindow.SetActive(false); }));
     }
 
     public void ShowMiniGameStartWindow(ButtonVariants game)
@@ -267,7 +274,7 @@ public class MainUIManager : MonoBehaviour
             MiniGameStartWindow.SetActive(true);
         }
 
-        timerIDs.Add(TimerManager.StartTimer(2f, false, delegate
+        timerIDs.Add(TimerManager.StartTimer(2.4f, false, delegate
         {
             MiniGameStartWindow.SetActive(false);
             switch (ButtonTask)
@@ -342,7 +349,7 @@ public class MainUIManager : MonoBehaviour
         timerIDs.Add(TimerManager.StartTimer(waitTime, false, delegate
         {
             GetNextTask();
-            timerIDs.Add(TimerManager.StartTimer(2f, false, delegate { TaskStartButton.gameObject.SetActive(true); }));
+            timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate { TaskStartButton.gameObject.SetActive(true); }));
             MiniGameEndWindow.SetActive(false);
             inTask = false;
         }));

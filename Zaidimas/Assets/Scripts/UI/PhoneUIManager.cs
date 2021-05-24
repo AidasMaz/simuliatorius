@@ -349,6 +349,7 @@ public class PhoneUIManager : MonoBehaviour
     public void OpenSaveWindow()
     {
         //ClickSound.Play();
+        SetSaveWindowObjects();
         MainWindow.SetActive(false);
         SaveWindow.SetActive(true);
     }

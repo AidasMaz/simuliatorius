@@ -17,14 +17,18 @@ public class ToiletPapperTaskManager : MonoBehaviour
 
     public void SetTPFindingLevel()
     {
+        CollecetedPaper = false;
         number = Random.Range(0, TPs.Length);
         TPs[number].SetActive(true);
-        OriginalTP.SetActive(false);
+        TPs[number].GetComponent<ItemColorPulsing>().SetUpItem();
+        //OriginalTP.SetActive(false);
+        OriginalTP.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void FinishTPFindingLevel()
     {
         TPs[number].SetActive(false);
-        OriginalTP.SetActive(true);
+        //OriginalTP.SetActive(true);
+        OriginalTP.GetComponent<SpriteRenderer>().enabled = true;
     }
 }
