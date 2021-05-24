@@ -130,13 +130,9 @@ public class ItemColorPulsing : MonoBehaviour
                     else
                         UIManager.ShowMiniGameEndWindow("Trash", true);
                     break;
-                //case ColorType.Ducks:
-                //    DuckManager = GameObject.Find("Duck finding manager").GetComponent<DuckTaskManager>();
-                //    break;
-                //case ColorType.Sleep:
-                //    UIManager.GetNextDay();
-                //    Debug.Log("Kita diena");
-                //    break;
+                case ColorType.Ducks:
+                    DuckManager.DuckPickedUp = true;
+                    break;
             }
         }
     }

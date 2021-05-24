@@ -205,7 +205,7 @@ public class MainUIManager : MonoBehaviour
             ShowMiniGameEndWindow("Work", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && PlayerInfo.PlayerDataObject.Level < 3)
         {
             Debug.Log("Level up!");
             PlayerInfo.PlayerDataObject.Level += 1;
