@@ -15,7 +15,7 @@ public class Gynimas3 : MonoBehaviour
 
         Audio = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
 
-        Audio.PlaySound("Phone error");
+        //Audio.PlaySound("Phone error");
         ShuffleArray();
         int atrinkti = Random.Range(2, 4);
         for (int i = 0; i < 6; i++)

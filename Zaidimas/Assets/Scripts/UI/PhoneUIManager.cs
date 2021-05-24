@@ -78,6 +78,8 @@ public class PhoneUIManager : MonoBehaviour
 
     private void Start()
     {
+        
+
         //isimti kai bus menu scena
         //if (DeleteLastInfo)
         //{
@@ -113,6 +115,7 @@ public class PhoneUIManager : MonoBehaviour
 
         AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
         AudioManager.ChangeMusic(PlayerInfo.PlayerDataObject.Place);
+        AudioManager.PlaySound("About close");
 
         SetTaskImages();
         UpdateCalendarNumberForCalendar();
@@ -399,6 +402,7 @@ public class PhoneUIManager : MonoBehaviour
             {
                 Debug.Log("Can travel");
                 TransitionAnimator.SetTrigger("StartTransition");
+                AudioManager.PlaySound("About open");
                 PutAwayPhone();
                 timerIDs.Add(TimerManager.StartTimer(2.55f, false, delegate
                 {
@@ -407,6 +411,7 @@ public class PhoneUIManager : MonoBehaviour
                     PlayerObj.GetComponent<PlayerMovement>().TeleportPlayer(desiredTravelPlaceName);
                     AudioManager.ChangeMusic(desiredTravelPlaceName);
                     TransitionAnimator.SetTrigger("ChangeMapPlaces");
+                    AudioManager.PlaySound("About close");
                 }));
 
                
@@ -479,6 +484,7 @@ public class PhoneUIManager : MonoBehaviour
     {
         PlayerInfo.SavePlayerData();
         GameDaysInfo.SaveLevelData();
+        AudioManager.PlaySound("About open");
         StartTransitionToScene();
         timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate
         {

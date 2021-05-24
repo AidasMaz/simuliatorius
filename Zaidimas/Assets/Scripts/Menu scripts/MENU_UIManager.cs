@@ -92,6 +92,8 @@ public class MENU_UIManager : MonoBehaviour
 
         AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
         AudioManager.InstantiateAudioVolume();
+        if (GameObject.Find("ChecksForFirstScene").GetComponent<CheckSceene>().NUMBER == 0)
+            AudioManager.PlaySound("About open");
 
         string playerPath = Application.persistentDataPath + "/" + PlayerFileName;
         if (!File.Exists(playerPath))
@@ -303,7 +305,7 @@ public class MENU_UIManager : MonoBehaviour
     public void StartTransitionToScene()
     {
         TransitionAnimator.SetTrigger("StartTransition");
-
+        AudioManager.PlaySound("About open");
         timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate
         {
             SceneManager.LoadScene(1);

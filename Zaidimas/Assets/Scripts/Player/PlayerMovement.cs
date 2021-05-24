@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && State != PlayerStates.Chef && !MainUIManager.inTask &&
+        if (Input.GetKeyDown(KeyCode.Escape) && State != PlayerStates.Chef && /*!MainUIManager.inTask &&*/
             animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_TakeOut" &&
             animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player_" + nameForPlayerAnimations + "_Phone_PutAway")
         {

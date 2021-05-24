@@ -38,7 +38,7 @@ public class MainUIManager : MonoBehaviour
     //public AudioSource LevelUpSound;
     //public AudioSource ClickSound;
 
-    public Image Black;
+    public GameObject Black;
 
     [Header("Managers and controllers")]
     public PlayerDataSaving PlayerInfo;
@@ -147,17 +147,14 @@ public class MainUIManager : MonoBehaviour
 
     public void GetNextDay()
     {
-        //Black.gameObject.SetActive(true);
-        //LeanTween.color(Black.gameObject, new Color32(255, 255, 255, 255), 0.3f);
-        //timerIDs.Add(TimerManager.StartTimer(1f, false, delegate {
-        //    LeanTween.color(Black.gameObject, new Color32(255, 255, 255, 0), 0.3f); Black.gameObject.SetActive(true);
-        //}));
+        Black.SetActive(true);
         inTask = false;
         ThoughBubble.SetActive(false);
         PlayerInfo.PlayerDataObject.CurrentDay += 1;
         GetNextTask();
         DayTaskManager.GameDataObject.PrintOutDayList();
-        timerIDs.Add(TimerManager.StartTimer(2f, false, delegate { TaskStartButton.gameObject.SetActive(true); }));
+        timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate { Black.SetActive(false); }));
+        timerIDs.Add(TimerManager.StartTimer(4f, false, delegate { TaskStartButton.gameObject.SetActive(true); }));
     }
 
     public void MarkOffCurrentTask(bool succeeded)
@@ -211,11 +208,12 @@ public class MainUIManager : MonoBehaviour
 
     public void ShowTutorial()
     {
-        TutorialWindow.SetActive(true);
+        //TutorialWindow.SetActive(true);
     }
     public void CloseTutorial()
     {
-        TutorialWindow.SetActive(false);
+        //TutorialWindow.SetActive(false);
+        
     }
 
     //------------------------------------------------------------
@@ -226,7 +224,7 @@ public class MainUIManager : MonoBehaviour
         LevelUpWindowImage.sprite = LevelUpSprites[lvl - 1];
         LevelUpWindow.SetActive(true);
         //LevelUpSound.Play();
-        timerIDs.Add(TimerManager.StartTimer(2f, false, delegate { LevelUpWindow.SetActive(false); }));
+        timerIDs.Add(TimerManager.StartTimer(2.4f, false, delegate { LevelUpWindow.SetActive(false); }));
     }
 
     public void ShowMiniGameStartWindow(ButtonVariants game)
@@ -319,7 +317,8 @@ public class MainUIManager : MonoBehaviour
             case ButtonVariants.Working:
                 break;
         }
-        // pradeti skaiciuoti laika ir parodyti objektus
+            
+        // skaiciuoti laika
     }
 
     public void ShowMiniGameEndWindow(string game, bool goodEnd)
