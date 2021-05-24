@@ -56,6 +56,9 @@ public class PhoneUIManager : MonoBehaviour
 
     private List<uint> timerIDs = new List<uint>();
 
+    [Header("Transition")]
+    public Animator TransitionAnimator;
+
     [Header("Managers and controllers")]
     public TaskGeneration GameDaysInfo;
     public SettingSaving SettingsInfo;
@@ -124,6 +127,20 @@ public class PhoneUIManager : MonoBehaviour
         SetSaveWindowObjects();
 
         canPressMapButtons = true;
+    }
+
+    public void StartTransitionToScene()
+    {
+        TransitionAnimator.SetTrigger("StartTransition");
+
+        timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate
+        {
+            SceneManager.LoadScene(0);
+        }));
+    }
+    public void FinishTransition()
+    {
+
     }
 
     public void TakeOutPhone()
@@ -269,7 +286,7 @@ public class PhoneUIManager : MonoBehaviour
                         TaskFailedImages[1].gameObject.SetActive(true);
                         break;
                 }
-                 
+
                 if (day.DaysHomeTasks.Count > 1)
                 {
                     switch (day.DaysHomeTasks.ElementAt(1).Task)
@@ -381,11 +398,18 @@ public class PhoneUIManager : MonoBehaviour
             else
             {
                 Debug.Log("Can travel");
-                PlayerInfo.PlayerDataObject.Place = desiredTravelPlaceName;
+                TransitionAnimator.SetTrigger("StartTransition");
                 PutAwayPhone();
-                canPressMapButtons = true;
-                PlayerObj.GetComponent<PlayerMovement>().TeleportPlayer(desiredTravelPlaceName);
-                AudioManager.ChangeMusic(desiredTravelPlaceName);
+                timerIDs.Add(TimerManager.StartTimer(2.55f, false, delegate
+                {
+                    PlayerInfo.PlayerDataObject.Place = desiredTravelPlaceName;
+                    canPressMapButtons = true;
+                    PlayerObj.GetComponent<PlayerMovement>().TeleportPlayer(desiredTravelPlaceName);
+                    AudioManager.ChangeMusic(desiredTravelPlaceName);
+                    TransitionAnimator.SetTrigger("ChangeMapPlaces");
+                }));
+
+               
             }
         }
     }
@@ -455,8 +479,11 @@ public class PhoneUIManager : MonoBehaviour
     {
         PlayerInfo.SavePlayerData();
         GameDaysInfo.SaveLevelData();
-        AudioManager.ChangeMusic("Menu");
-        SceneManager.LoadScene(0);
+        StartTransitionToScene();
+        timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate
+        {
+            AudioManager.ChangeMusic("Menu");
+        }));
     }
 
     public void PlayClick()

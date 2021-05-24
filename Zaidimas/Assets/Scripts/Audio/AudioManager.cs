@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour
 
     public void InstantiateAudioVolume()
     {
+        SettingsManager = GameObject.Find("Settings").GetComponent<SettingSaving>();
         ChangeMusicVolume(SettingsManager.SettingsObject.MusicVolume);
         ChangeSoundVolume(SettingsManager.SettingsObject.SoundVolume);
     }

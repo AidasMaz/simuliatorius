@@ -63,6 +63,11 @@ public class MENU_UIManager : MonoBehaviour
     [Space]
     public Vector3 normal;
 
+    [Header("Transition")]
+    public Animator TransitionAnimator;
+    [Space]
+    public GameObject TransitionScreen;
+
     private List<uint> timerIDs = new List<uint>();
 
     private static string PlayerFileName = "player.v1";
@@ -72,6 +77,12 @@ public class MENU_UIManager : MonoBehaviour
 
     private void Start()
     {
+        if(GameObject.Find("ChecksForFirstScene").GetComponent<CheckSceene>().NUMBER == 0)
+        {
+            TransitionScreen.SetActive(false);
+            GameObject.Find("ChecksForFirstScene").GetComponent<CheckSceene>().NUMBER = 1;
+        }
+
         Debug.Log(Application.persistentDataPath);
         LeanTween.moveLocal(AboutWindow.gameObject, AboutWindowHidenPos, 0.0f);
 
@@ -283,9 +294,20 @@ public class MENU_UIManager : MonoBehaviour
 
     public void LoadGameScene()
     {
-        //AudioManager.PlaySound("Click");
+        AudioManager.PlaySound("Click");
+        TransitionScreen.SetActive(true);
         PlayerPrefs.SetString("CHARACTER_NAME", playerNameFromChoosingWindow);
-        SceneManager.LoadScene(1);
+        StartTransitionToScene();
+    }
+
+    public void StartTransitionToScene()
+    {
+        TransitionAnimator.SetTrigger("StartTransition");
+
+        timerIDs.Add(TimerManager.StartTimer(2.5f, false, delegate
+        {
+            SceneManager.LoadScene(1);
+        }));
     }
 
     public void DeleteProgress()
