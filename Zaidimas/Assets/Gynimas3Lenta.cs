@@ -16,6 +16,8 @@ public class Gynimas3Lenta : MonoBehaviour
 
     public List<string> pasirinkti = new List<string>();
 
+    public GameObject Viskas;
+
     public void Start()
     {
         PabaigosLangas.SetActive(false);
@@ -58,5 +60,10 @@ public class Gynimas3Lenta : MonoBehaviour
         else
             text.text = "Neteisingai";
         PabaigosLangas.SetActive(true);
+    }
+
+    public void Uzdaryti()
+    {
+        Viskas.SetActive(false);
     }
 }

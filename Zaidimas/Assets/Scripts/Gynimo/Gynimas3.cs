@@ -6,14 +6,18 @@ using UnityEngine.UI;
 public class Gynimas3 : MonoBehaviour
 {
     public Image[] Ingridientai;
-    public AudioManager Audio;
+    //public AudioManager Audio;
 
     public List<string> original;
 
+    public GameObject langasShow;
+
+    public Collider2D collition;
+
     private void Start()
     {
-
-        Audio = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
+        //collition = GameObject.Find("showobjektas").GetComponent<Collider2D>();
+        //Audio = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
 
         //Audio.PlaySound("Phone error");
         ShuffleArray();
@@ -32,6 +36,11 @@ public class Gynimas3 : MonoBehaviour
         }
     }
 
+    public void Atidaryti()
+    { 
+        langasShow.SetActive(true);
+    }
+
     private void ShuffleArray()
     {
         for (int i = 0; i < Ingridientai.Length; i++)
@@ -42,4 +51,11 @@ public class Gynimas3 : MonoBehaviour
             Ingridientai[rand] = temp;
         }
     }
+
+    public void CloseShow()
+    {
+        langasShow.SetActive(false);
+    }
+
+    
 }

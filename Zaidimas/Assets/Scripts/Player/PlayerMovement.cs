@@ -59,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
         AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
         Black = GameObject.Find("Image Black");
 
+        AudioManager = GameObject.Find("AUDIO OBJECT").GetComponent<AudioManager>();
+
         State = PlayerStates.Walking;
 
         animator.SetBool("Phone_TakeOut", false);
@@ -211,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case "Work":
                 transform.position = WorkPosition;
+
                 break;
         }
 
